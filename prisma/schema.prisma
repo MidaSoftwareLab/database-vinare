@@ -1,6 +1,9 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider        = "prisma-client"
   output          = "../src/generated/prisma"
@@ -15,6 +18,13 @@ datasource db {
 enum QrCodeStatus {
   active
   disabled
+}
+
+enum Permission {
+  dashboard
+  qrcode
+  billings
+  chatbot
 }
 
 model User {
@@ -112,13 +122,6 @@ model Organization {
   @@map("organization")
 }
 
-enum Permission {
-  dashboard
-  qrcode
-  billings
-  chatbot
-}
-
 model Member {
   id             String       @id
   organizationId String
@@ -178,6 +181,24 @@ model QrCode {
 
   @@index([organizationId])
   @@map("qr_code")
+}
+
+model QrScan {
+  id       String @id @default(cuid())
+  qrCodeId String
+  qrCode   QrCode @relation(fields: [qrCodeId], references: [id], onDelete: Cascade)
+
+  userAgent String?
+  browser   String?
+  os        String?
+  device    String?
+  country   String?
+  city      String?
+
+  createdAt DateTime @default(now())
+
+  @@index([qrCodeId])
+  @@map("qr_scan")
 }
 
 model Chatbot {
@@ -279,24 +300,6 @@ model ChatMessage {
   @@unique([conversationId, seq])
   @@index([conversationId], map: "idx_chat_message_conversation_id")
   @@map("chat_message")
-}
-
-model QrScan {
-  id       String @id @default(cuid())
-  qrCodeId String
-  qrCode   QrCode @relation(fields: [qrCodeId], references: [id], onDelete: Cascade)
-
-  userAgent String?
-  browser   String?
-  os        String?
-  device    String?
-  country   String?
-  city      String?
-
-  createdAt DateTime @default(now())
-
-  @@index([qrCodeId])
-  @@map("qr_scan")
 }
 
 // ============================================================================
