@@ -7,10 +7,13 @@
         "db:down": "docker-compose down",
         "migrate:dev": "prisma migrate dev",
         "db:studio": "prisma studio",
-        "db:push": "prisma db push"
+        "db:generate": "prisma generate"
     },
-    "dependencies": {},
     "devDependencies": {
-        "prisma": "^5.22.0"
+        "@types/node": "^25.3.5",
+        "prisma": "^7.4.1"
+    },
+    "dependencies": {
+        "dotenv": "^17.3.1"
     }
 }
