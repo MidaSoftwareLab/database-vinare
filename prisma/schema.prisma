@@ -114,12 +114,37 @@ model Organization {
   members     Member[]
   invitations Invitation[]
 
+  billingProfile BillingProfile?
+
   // Qr
   qrCodes  QrCode[]
   chatbots Chatbot[]
 
   @@unique([slug])
   @@map("organization")
+}
+
+model BillingProfile {
+  id             String       @id @default(cuid())
+  organizationId String       @unique
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  companyName String
+  taxId       String // P.IVA, VIES, EIN
+  fiscalCode  String? // Codice Fiscale (Italia)
+  sdiCode     String? // Codice Destinatario (Italia - 7 caratteri)
+  pecAddress  String? // Indirizzo PEC (Italia)
+
+  address    String?
+  city       String?
+  state      String? // Provincia o Regione
+  postalCode String? // CAP o ZIP Code
+  country    String  @default("IT")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("billing_profile")
 }
 
 model Member {
