@@ -240,6 +240,7 @@ export type OrganizationWhereInput = {
   stripeCancelAtPeriodEnd?: Prisma.BoolFilter<"Organization"> | boolean
   members?: Prisma.MemberListRelationFilter
   invitations?: Prisma.InvitationListRelationFilter
+  billingProfile?: Prisma.XOR<Prisma.BillingProfileNullableScalarRelationFilter, Prisma.BillingProfileWhereInput> | null
   qrCodes?: Prisma.QrCodeListRelationFilter
   chatbots?: Prisma.ChatbotListRelationFilter
 }
@@ -259,6 +260,7 @@ export type OrganizationOrderByWithRelationInput = {
   stripeCancelAtPeriodEnd?: Prisma.SortOrder
   members?: Prisma.MemberOrderByRelationAggregateInput
   invitations?: Prisma.InvitationOrderByRelationAggregateInput
+  billingProfile?: Prisma.BillingProfileOrderByWithRelationInput
   qrCodes?: Prisma.QrCodeOrderByRelationAggregateInput
   chatbots?: Prisma.ChatbotOrderByRelationAggregateInput
 }
@@ -281,6 +283,7 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   stripeCancelAtPeriodEnd?: Prisma.BoolFilter<"Organization"> | boolean
   members?: Prisma.MemberListRelationFilter
   invitations?: Prisma.InvitationListRelationFilter
+  billingProfile?: Prisma.XOR<Prisma.BillingProfileNullableScalarRelationFilter, Prisma.BillingProfileWhereInput> | null
   qrCodes?: Prisma.QrCodeListRelationFilter
   chatbots?: Prisma.ChatbotListRelationFilter
 }, "id" | "stripeCustomerId" | "stripeSubscriptionId" | "slug">
@@ -336,6 +339,7 @@ export type OrganizationCreateInput = {
   stripeCancelAtPeriodEnd?: boolean
   members?: Prisma.MemberCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
 }
@@ -355,6 +359,7 @@ export type OrganizationUncheckedCreateInput = {
   stripeCancelAtPeriodEnd?: boolean
   members?: Prisma.MemberUncheckedCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
 }
@@ -374,6 +379,7 @@ export type OrganizationUpdateInput = {
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   members?: Prisma.MemberUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
 }
@@ -393,6 +399,7 @@ export type OrganizationUncheckedUpdateInput = {
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   members?: Prisma.MemberUncheckedUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
 }
@@ -492,6 +499,20 @@ export type OrganizationScalarRelationFilter = {
   isNot?: Prisma.OrganizationWhereInput
 }
 
+export type OrganizationCreateNestedOneWithoutBillingProfileInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutBillingProfileInput, Prisma.OrganizationUncheckedCreateWithoutBillingProfileInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutBillingProfileInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutBillingProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutBillingProfileInput, Prisma.OrganizationUncheckedCreateWithoutBillingProfileInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutBillingProfileInput
+  upsert?: Prisma.OrganizationUpsertWithoutBillingProfileInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutBillingProfileInput, Prisma.OrganizationUpdateWithoutBillingProfileInput>, Prisma.OrganizationUncheckedUpdateWithoutBillingProfileInput>
+}
+
 export type OrganizationCreateNestedOneWithoutMembersInput = {
   create?: Prisma.XOR<Prisma.OrganizationCreateWithoutMembersInput, Prisma.OrganizationUncheckedCreateWithoutMembersInput>
   connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutMembersInput
@@ -548,6 +569,98 @@ export type OrganizationUpdateOneRequiredWithoutChatbotsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutChatbotsInput, Prisma.OrganizationUpdateWithoutChatbotsInput>, Prisma.OrganizationUncheckedUpdateWithoutChatbotsInput>
 }
 
+export type OrganizationCreateWithoutBillingProfileInput = {
+  id: string
+  name: string
+  slug?: string | null
+  logo?: string | null
+  createdAt: Date | string
+  metadata?: string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeStatus?: string | null
+  stripeCurrentPeriodEnd?: Date | string | null
+  stripePriceId?: string | null
+  stripeCancelAtPeriodEnd?: boolean
+  members?: Prisma.MemberCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
+  chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutBillingProfileInput = {
+  id: string
+  name: string
+  slug?: string | null
+  logo?: string | null
+  createdAt: Date | string
+  metadata?: string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeStatus?: string | null
+  stripeCurrentPeriodEnd?: Date | string | null
+  stripePriceId?: string | null
+  stripeCancelAtPeriodEnd?: boolean
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
+  chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutBillingProfileInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutBillingProfileInput, Prisma.OrganizationUncheckedCreateWithoutBillingProfileInput>
+}
+
+export type OrganizationUpsertWithoutBillingProfileInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutBillingProfileInput, Prisma.OrganizationUncheckedUpdateWithoutBillingProfileInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutBillingProfileInput, Prisma.OrganizationUncheckedCreateWithoutBillingProfileInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutBillingProfileInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutBillingProfileInput, Prisma.OrganizationUncheckedUpdateWithoutBillingProfileInput>
+}
+
+export type OrganizationUpdateWithoutBillingProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metadata?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  members?: Prisma.MemberUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
+  chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutBillingProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metadata?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  members?: Prisma.MemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
+  chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
 export type OrganizationCreateWithoutMembersInput = {
   id: string
   name: string
@@ -562,6 +675,7 @@ export type OrganizationCreateWithoutMembersInput = {
   stripePriceId?: string | null
   stripeCancelAtPeriodEnd?: boolean
   invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
 }
@@ -580,6 +694,7 @@ export type OrganizationUncheckedCreateWithoutMembersInput = {
   stripePriceId?: string | null
   stripeCancelAtPeriodEnd?: boolean
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
 }
@@ -614,6 +729,7 @@ export type OrganizationUpdateWithoutMembersInput = {
   stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
 }
@@ -632,6 +748,7 @@ export type OrganizationUncheckedUpdateWithoutMembersInput = {
   stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
 }
@@ -650,6 +767,7 @@ export type OrganizationCreateWithoutInvitationsInput = {
   stripePriceId?: string | null
   stripeCancelAtPeriodEnd?: boolean
   members?: Prisma.MemberCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
 }
@@ -668,6 +786,7 @@ export type OrganizationUncheckedCreateWithoutInvitationsInput = {
   stripePriceId?: string | null
   stripeCancelAtPeriodEnd?: boolean
   members?: Prisma.MemberUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
 }
@@ -702,6 +821,7 @@ export type OrganizationUpdateWithoutInvitationsInput = {
   stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   members?: Prisma.MemberUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
 }
@@ -720,6 +840,7 @@ export type OrganizationUncheckedUpdateWithoutInvitationsInput = {
   stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   members?: Prisma.MemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
 }
@@ -739,6 +860,7 @@ export type OrganizationCreateWithoutQrCodesInput = {
   stripeCancelAtPeriodEnd?: boolean
   members?: Prisma.MemberCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
 }
 
@@ -757,6 +879,7 @@ export type OrganizationUncheckedCreateWithoutQrCodesInput = {
   stripeCancelAtPeriodEnd?: boolean
   members?: Prisma.MemberUncheckedCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
@@ -791,6 +914,7 @@ export type OrganizationUpdateWithoutQrCodesInput = {
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   members?: Prisma.MemberUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
 }
 
@@ -809,6 +933,7 @@ export type OrganizationUncheckedUpdateWithoutQrCodesInput = {
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   members?: Prisma.MemberUncheckedUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
@@ -827,6 +952,7 @@ export type OrganizationCreateWithoutChatbotsInput = {
   stripeCancelAtPeriodEnd?: boolean
   members?: Prisma.MemberCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
 }
 
@@ -845,6 +971,7 @@ export type OrganizationUncheckedCreateWithoutChatbotsInput = {
   stripeCancelAtPeriodEnd?: boolean
   members?: Prisma.MemberUncheckedCreateNestedManyWithoutOrganizationInput
   invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
@@ -879,6 +1006,7 @@ export type OrganizationUpdateWithoutChatbotsInput = {
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   members?: Prisma.MemberUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
 }
 
@@ -897,6 +1025,7 @@ export type OrganizationUncheckedUpdateWithoutChatbotsInput = {
   stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
   members?: Prisma.MemberUncheckedUpdateManyWithoutOrganizationNestedInput
   invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
@@ -973,6 +1102,7 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   stripeCancelAtPeriodEnd?: boolean
   members?: boolean | Prisma.Organization$membersArgs<ExtArgs>
   invitations?: boolean | Prisma.Organization$invitationsArgs<ExtArgs>
+  billingProfile?: boolean | Prisma.Organization$billingProfileArgs<ExtArgs>
   qrCodes?: boolean | Prisma.Organization$qrCodesArgs<ExtArgs>
   chatbots?: boolean | Prisma.Organization$chatbotsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
@@ -1027,6 +1157,7 @@ export type OrganizationOmit<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   members?: boolean | Prisma.Organization$membersArgs<ExtArgs>
   invitations?: boolean | Prisma.Organization$invitationsArgs<ExtArgs>
+  billingProfile?: boolean | Prisma.Organization$billingProfileArgs<ExtArgs>
   qrCodes?: boolean | Prisma.Organization$qrCodesArgs<ExtArgs>
   chatbots?: boolean | Prisma.Organization$chatbotsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
@@ -1039,6 +1170,7 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
   objects: {
     members: Prisma.$MemberPayload<ExtArgs>[]
     invitations: Prisma.$InvitationPayload<ExtArgs>[]
+    billingProfile: Prisma.$BillingProfilePayload<ExtArgs> | null
     qrCodes: Prisma.$QrCodePayload<ExtArgs>[]
     chatbots: Prisma.$ChatbotPayload<ExtArgs>[]
   }
@@ -1451,6 +1583,7 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   readonly [Symbol.toStringTag]: "PrismaPromise"
   members<T extends Prisma.Organization$membersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$membersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invitations<T extends Prisma.Organization$invitationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  billingProfile<T extends Prisma.Organization$billingProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$billingProfileArgs<ExtArgs>>): Prisma.Prisma__BillingProfileClient<runtime.Types.Result.GetResult<Prisma.$BillingProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   qrCodes<T extends Prisma.Organization$qrCodesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$qrCodesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QrCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   chatbots<T extends Prisma.Organization$chatbotsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$chatbotsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatbotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1927,6 +2060,25 @@ export type Organization$invitationsArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.InvitationScalarFieldEnum | Prisma.InvitationScalarFieldEnum[]
+}
+
+/**
+ * Organization.billingProfile
+ */
+export type Organization$billingProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BillingProfile
+   */
+  select?: Prisma.BillingProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BillingProfile
+   */
+  omit?: Prisma.BillingProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BillingProfileInclude<ExtArgs> | null
+  where?: Prisma.BillingProfileWhereInput
 }
 
 /**

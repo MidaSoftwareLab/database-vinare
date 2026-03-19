@@ -56,14 +56,15 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Organization: 'Organization',
+  BillingProfile: 'BillingProfile',
   Member: 'Member',
   Invitation: 'Invitation',
   QrCode: 'QrCode',
+  QrScan: 'QrScan',
   Chatbot: 'Chatbot',
   WineLinePrompt: 'WineLinePrompt',
   ChatConversation: 'ChatConversation',
   ChatMessage: 'ChatMessage',
-  QrScan: 'QrScan',
   ConversationEmbedding: 'ConversationEmbedding',
   ConversationAnalytics: 'ConversationAnalytics'
 } as const
@@ -161,6 +162,26 @@ export const OrganizationScalarFieldEnum = {
 export type OrganizationScalarFieldEnum = (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum]
 
 
+export const BillingProfileScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  companyName: 'companyName',
+  taxId: 'taxId',
+  fiscalCode: 'fiscalCode',
+  sdiCode: 'sdiCode',
+  pecAddress: 'pecAddress',
+  address: 'address',
+  city: 'city',
+  state: 'state',
+  postalCode: 'postalCode',
+  country: 'country',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BillingProfileScalarFieldEnum = (typeof BillingProfileScalarFieldEnum)[keyof typeof BillingProfileScalarFieldEnum]
+
+
 export const MemberScalarFieldEnum = {
   id: 'id',
   organizationId: 'organizationId',
@@ -204,6 +225,24 @@ export const QrCodeScalarFieldEnum = {
 } as const
 
 export type QrCodeScalarFieldEnum = (typeof QrCodeScalarFieldEnum)[keyof typeof QrCodeScalarFieldEnum]
+
+
+export const QrScanScalarFieldEnum = {
+  id: 'id',
+  qrCodeId: 'qrCodeId',
+  userAgent: 'userAgent',
+  browser: 'browser',
+  os: 'os',
+  device: 'device',
+  country: 'country',
+  city: 'city',
+  region: 'region',
+  language: 'language',
+  referer: 'referer',
+  createdAt: 'createdAt'
+} as const
+
+export type QrScanScalarFieldEnum = (typeof QrScanScalarFieldEnum)[keyof typeof QrScanScalarFieldEnum]
 
 
 export const ChatbotScalarFieldEnum = {
@@ -274,21 +313,6 @@ export const ChatMessageScalarFieldEnum = {
 } as const
 
 export type ChatMessageScalarFieldEnum = (typeof ChatMessageScalarFieldEnum)[keyof typeof ChatMessageScalarFieldEnum]
-
-
-export const QrScanScalarFieldEnum = {
-  id: 'id',
-  qrCodeId: 'qrCodeId',
-  userAgent: 'userAgent',
-  browser: 'browser',
-  os: 'os',
-  device: 'device',
-  country: 'country',
-  city: 'city',
-  createdAt: 'createdAt'
-} as const
-
-export type QrScanScalarFieldEnum = (typeof QrScanScalarFieldEnum)[keyof typeof QrScanScalarFieldEnum]
 
 
 export const ConversationEmbeddingScalarFieldEnum = {

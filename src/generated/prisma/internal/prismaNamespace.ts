@@ -389,14 +389,15 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Organization: 'Organization',
+  BillingProfile: 'BillingProfile',
   Member: 'Member',
   Invitation: 'Invitation',
   QrCode: 'QrCode',
+  QrScan: 'QrScan',
   Chatbot: 'Chatbot',
   WineLinePrompt: 'WineLinePrompt',
   ChatConversation: 'ChatConversation',
   ChatMessage: 'ChatMessage',
-  QrScan: 'QrScan',
   ConversationEmbedding: 'ConversationEmbedding',
   ConversationAnalytics: 'ConversationAnalytics'
 } as const
@@ -414,7 +415,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "organization" | "member" | "invitation" | "qrCode" | "chatbot" | "wineLinePrompt" | "chatConversation" | "chatMessage" | "qrScan" | "conversationEmbedding" | "conversationAnalytics"
+    modelProps: "user" | "session" | "account" | "verification" | "organization" | "billingProfile" | "member" | "invitation" | "qrCode" | "qrScan" | "chatbot" | "wineLinePrompt" | "chatConversation" | "chatMessage" | "conversationEmbedding" | "conversationAnalytics"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -788,6 +789,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    BillingProfile: {
+      payload: Prisma.$BillingProfilePayload<ExtArgs>
+      fields: Prisma.BillingProfileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BillingProfileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BillingProfileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload>
+        }
+        findFirst: {
+          args: Prisma.BillingProfileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BillingProfileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload>
+        }
+        findMany: {
+          args: Prisma.BillingProfileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload>[]
+        }
+        create: {
+          args: Prisma.BillingProfileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload>
+        }
+        createMany: {
+          args: Prisma.BillingProfileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BillingProfileCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload>[]
+        }
+        delete: {
+          args: Prisma.BillingProfileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload>
+        }
+        update: {
+          args: Prisma.BillingProfileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload>
+        }
+        deleteMany: {
+          args: Prisma.BillingProfileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BillingProfileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BillingProfileUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload>[]
+        }
+        upsert: {
+          args: Prisma.BillingProfileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BillingProfilePayload>
+        }
+        aggregate: {
+          args: Prisma.BillingProfileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBillingProfile>
+        }
+        groupBy: {
+          args: Prisma.BillingProfileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BillingProfileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BillingProfileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BillingProfileCountAggregateOutputType> | number
+        }
+      }
+    }
     Member: {
       payload: Prisma.$MemberPayload<ExtArgs>
       fields: Prisma.MemberFieldRefs
@@ -1007,6 +1082,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.QrCodeCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.QrCodeCountAggregateOutputType> | number
+        }
+      }
+    }
+    QrScan: {
+      payload: Prisma.$QrScanPayload<ExtArgs>
+      fields: Prisma.QrScanFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.QrScanFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.QrScanFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
+        }
+        findFirst: {
+          args: Prisma.QrScanFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.QrScanFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
+        }
+        findMany: {
+          args: Prisma.QrScanFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>[]
+        }
+        create: {
+          args: Prisma.QrScanCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
+        }
+        createMany: {
+          args: Prisma.QrScanCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.QrScanCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>[]
+        }
+        delete: {
+          args: Prisma.QrScanDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
+        }
+        update: {
+          args: Prisma.QrScanUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
+        }
+        deleteMany: {
+          args: Prisma.QrScanDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.QrScanUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.QrScanUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>[]
+        }
+        upsert: {
+          args: Prisma.QrScanUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
+        }
+        aggregate: {
+          args: Prisma.QrScanAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateQrScan>
+        }
+        groupBy: {
+          args: Prisma.QrScanGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.QrScanGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.QrScanCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.QrScanCountAggregateOutputType> | number
         }
       }
     }
@@ -1306,80 +1455,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    QrScan: {
-      payload: Prisma.$QrScanPayload<ExtArgs>
-      fields: Prisma.QrScanFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.QrScanFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.QrScanFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
-        }
-        findFirst: {
-          args: Prisma.QrScanFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.QrScanFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
-        }
-        findMany: {
-          args: Prisma.QrScanFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>[]
-        }
-        create: {
-          args: Prisma.QrScanCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
-        }
-        createMany: {
-          args: Prisma.QrScanCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.QrScanCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>[]
-        }
-        delete: {
-          args: Prisma.QrScanDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
-        }
-        update: {
-          args: Prisma.QrScanUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
-        }
-        deleteMany: {
-          args: Prisma.QrScanDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.QrScanUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.QrScanUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>[]
-        }
-        upsert: {
-          args: Prisma.QrScanUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QrScanPayload>
-        }
-        aggregate: {
-          args: Prisma.QrScanAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateQrScan>
-        }
-        groupBy: {
-          args: Prisma.QrScanGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.QrScanGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.QrScanCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.QrScanCountAggregateOutputType> | number
-        }
-      }
-    }
     ConversationEmbedding: {
       payload: Prisma.$ConversationEmbeddingPayload<ExtArgs>
       fields: Prisma.ConversationEmbeddingFieldRefs
@@ -1628,6 +1703,26 @@ export const OrganizationScalarFieldEnum = {
 export type OrganizationScalarFieldEnum = (typeof OrganizationScalarFieldEnum)[keyof typeof OrganizationScalarFieldEnum]
 
 
+export const BillingProfileScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  companyName: 'companyName',
+  taxId: 'taxId',
+  fiscalCode: 'fiscalCode',
+  sdiCode: 'sdiCode',
+  pecAddress: 'pecAddress',
+  address: 'address',
+  city: 'city',
+  state: 'state',
+  postalCode: 'postalCode',
+  country: 'country',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BillingProfileScalarFieldEnum = (typeof BillingProfileScalarFieldEnum)[keyof typeof BillingProfileScalarFieldEnum]
+
+
 export const MemberScalarFieldEnum = {
   id: 'id',
   organizationId: 'organizationId',
@@ -1671,6 +1766,24 @@ export const QrCodeScalarFieldEnum = {
 } as const
 
 export type QrCodeScalarFieldEnum = (typeof QrCodeScalarFieldEnum)[keyof typeof QrCodeScalarFieldEnum]
+
+
+export const QrScanScalarFieldEnum = {
+  id: 'id',
+  qrCodeId: 'qrCodeId',
+  userAgent: 'userAgent',
+  browser: 'browser',
+  os: 'os',
+  device: 'device',
+  country: 'country',
+  city: 'city',
+  region: 'region',
+  language: 'language',
+  referer: 'referer',
+  createdAt: 'createdAt'
+} as const
+
+export type QrScanScalarFieldEnum = (typeof QrScanScalarFieldEnum)[keyof typeof QrScanScalarFieldEnum]
 
 
 export const ChatbotScalarFieldEnum = {
@@ -1741,21 +1854,6 @@ export const ChatMessageScalarFieldEnum = {
 } as const
 
 export type ChatMessageScalarFieldEnum = (typeof ChatMessageScalarFieldEnum)[keyof typeof ChatMessageScalarFieldEnum]
-
-
-export const QrScanScalarFieldEnum = {
-  id: 'id',
-  qrCodeId: 'qrCodeId',
-  userAgent: 'userAgent',
-  browser: 'browser',
-  os: 'os',
-  device: 'device',
-  country: 'country',
-  city: 'city',
-  createdAt: 'createdAt'
-} as const
-
-export type QrScanScalarFieldEnum = (typeof QrScanScalarFieldEnum)[keyof typeof QrScanScalarFieldEnum]
 
 
 export const ConversationEmbeddingScalarFieldEnum = {
@@ -2039,14 +2137,15 @@ export type GlobalOmitConfig = {
   account?: Prisma.AccountOmit
   verification?: Prisma.VerificationOmit
   organization?: Prisma.OrganizationOmit
+  billingProfile?: Prisma.BillingProfileOmit
   member?: Prisma.MemberOmit
   invitation?: Prisma.InvitationOmit
   qrCode?: Prisma.QrCodeOmit
+  qrScan?: Prisma.QrScanOmit
   chatbot?: Prisma.ChatbotOmit
   wineLinePrompt?: Prisma.WineLinePromptOmit
   chatConversation?: Prisma.ChatConversationOmit
   chatMessage?: Prisma.ChatMessageOmit
-  qrScan?: Prisma.QrScanOmit
   conversationEmbedding?: Prisma.ConversationEmbeddingOmit
   conversationAnalytics?: Prisma.ConversationAnalyticsOmit
 }

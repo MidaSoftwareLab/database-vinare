@@ -67,6 +67,11 @@ export type Verification = Prisma.VerificationModel
  */
 export type Organization = Prisma.OrganizationModel
 /**
+ * Model BillingProfile
+ * 
+ */
+export type BillingProfile = Prisma.BillingProfileModel
+/**
  * Model Member
  * 
  */
@@ -81,6 +86,11 @@ export type Invitation = Prisma.InvitationModel
  * 
  */
 export type QrCode = Prisma.QrCodeModel
+/**
+ * Model QrScan
+ * 
+ */
+export type QrScan = Prisma.QrScanModel
 /**
  * Model Chatbot
  * 
@@ -101,11 +111,6 @@ export type ChatConversation = Prisma.ChatConversationModel
  * 
  */
 export type ChatMessage = Prisma.ChatMessageModel
-/**
- * Model QrScan
- * 
- */
-export type QrScan = Prisma.QrScanModel
 /**
  * Model ConversationEmbedding
  * 

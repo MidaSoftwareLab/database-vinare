@@ -219,6 +219,9 @@ model QrScan {
   device    String?
   country   String?
   city      String?
+  region    String?
+  language  String?
+  referer   String?
 
   createdAt DateTime @default(now())
 

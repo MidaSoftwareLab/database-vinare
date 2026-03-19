@@ -33,6 +33,9 @@ export type QrScanMinAggregateOutputType = {
   device: string | null
   country: string | null
   city: string | null
+  region: string | null
+  language: string | null
+  referer: string | null
   createdAt: Date | null
 }
 
@@ -45,6 +48,9 @@ export type QrScanMaxAggregateOutputType = {
   device: string | null
   country: string | null
   city: string | null
+  region: string | null
+  language: string | null
+  referer: string | null
   createdAt: Date | null
 }
 
@@ -57,6 +63,9 @@ export type QrScanCountAggregateOutputType = {
   device: number
   country: number
   city: number
+  region: number
+  language: number
+  referer: number
   createdAt: number
   _all: number
 }
@@ -71,6 +80,9 @@ export type QrScanMinAggregateInputType = {
   device?: true
   country?: true
   city?: true
+  region?: true
+  language?: true
+  referer?: true
   createdAt?: true
 }
 
@@ -83,6 +95,9 @@ export type QrScanMaxAggregateInputType = {
   device?: true
   country?: true
   city?: true
+  region?: true
+  language?: true
+  referer?: true
   createdAt?: true
 }
 
@@ -95,6 +110,9 @@ export type QrScanCountAggregateInputType = {
   device?: true
   country?: true
   city?: true
+  region?: true
+  language?: true
+  referer?: true
   createdAt?: true
   _all?: true
 }
@@ -180,6 +198,9 @@ export type QrScanGroupByOutputType = {
   device: string | null
   country: string | null
   city: string | null
+  region: string | null
+  language: string | null
+  referer: string | null
   createdAt: Date
   _count: QrScanCountAggregateOutputType | null
   _min: QrScanMinAggregateOutputType | null
@@ -213,6 +234,9 @@ export type QrScanWhereInput = {
   device?: Prisma.StringNullableFilter<"QrScan"> | string | null
   country?: Prisma.StringNullableFilter<"QrScan"> | string | null
   city?: Prisma.StringNullableFilter<"QrScan"> | string | null
+  region?: Prisma.StringNullableFilter<"QrScan"> | string | null
+  language?: Prisma.StringNullableFilter<"QrScan"> | string | null
+  referer?: Prisma.StringNullableFilter<"QrScan"> | string | null
   createdAt?: Prisma.DateTimeFilter<"QrScan"> | Date | string
   qrCode?: Prisma.XOR<Prisma.QrCodeScalarRelationFilter, Prisma.QrCodeWhereInput>
 }
@@ -226,6 +250,9 @@ export type QrScanOrderByWithRelationInput = {
   device?: Prisma.SortOrderInput | Prisma.SortOrder
   country?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  language?: Prisma.SortOrderInput | Prisma.SortOrder
+  referer?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   qrCode?: Prisma.QrCodeOrderByWithRelationInput
 }
@@ -242,6 +269,9 @@ export type QrScanWhereUniqueInput = Prisma.AtLeast<{
   device?: Prisma.StringNullableFilter<"QrScan"> | string | null
   country?: Prisma.StringNullableFilter<"QrScan"> | string | null
   city?: Prisma.StringNullableFilter<"QrScan"> | string | null
+  region?: Prisma.StringNullableFilter<"QrScan"> | string | null
+  language?: Prisma.StringNullableFilter<"QrScan"> | string | null
+  referer?: Prisma.StringNullableFilter<"QrScan"> | string | null
   createdAt?: Prisma.DateTimeFilter<"QrScan"> | Date | string
   qrCode?: Prisma.XOR<Prisma.QrCodeScalarRelationFilter, Prisma.QrCodeWhereInput>
 }, "id">
@@ -255,6 +285,9 @@ export type QrScanOrderByWithAggregationInput = {
   device?: Prisma.SortOrderInput | Prisma.SortOrder
   country?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  language?: Prisma.SortOrderInput | Prisma.SortOrder
+  referer?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.QrScanCountOrderByAggregateInput
   _max?: Prisma.QrScanMaxOrderByAggregateInput
@@ -273,6 +306,9 @@ export type QrScanScalarWhereWithAggregatesInput = {
   device?: Prisma.StringNullableWithAggregatesFilter<"QrScan"> | string | null
   country?: Prisma.StringNullableWithAggregatesFilter<"QrScan"> | string | null
   city?: Prisma.StringNullableWithAggregatesFilter<"QrScan"> | string | null
+  region?: Prisma.StringNullableWithAggregatesFilter<"QrScan"> | string | null
+  language?: Prisma.StringNullableWithAggregatesFilter<"QrScan"> | string | null
+  referer?: Prisma.StringNullableWithAggregatesFilter<"QrScan"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"QrScan"> | Date | string
 }
 
@@ -284,6 +320,9 @@ export type QrScanCreateInput = {
   device?: string | null
   country?: string | null
   city?: string | null
+  region?: string | null
+  language?: string | null
+  referer?: string | null
   createdAt?: Date | string
   qrCode: Prisma.QrCodeCreateNestedOneWithoutScansInput
 }
@@ -297,6 +336,9 @@ export type QrScanUncheckedCreateInput = {
   device?: string | null
   country?: string | null
   city?: string | null
+  region?: string | null
+  language?: string | null
+  referer?: string | null
   createdAt?: Date | string
 }
 
@@ -308,6 +350,9 @@ export type QrScanUpdateInput = {
   device?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   qrCode?: Prisma.QrCodeUpdateOneRequiredWithoutScansNestedInput
 }
@@ -321,6 +366,9 @@ export type QrScanUncheckedUpdateInput = {
   device?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -333,6 +381,9 @@ export type QrScanCreateManyInput = {
   device?: string | null
   country?: string | null
   city?: string | null
+  region?: string | null
+  language?: string | null
+  referer?: string | null
   createdAt?: Date | string
 }
 
@@ -344,6 +395,9 @@ export type QrScanUpdateManyMutationInput = {
   device?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -356,6 +410,9 @@ export type QrScanUncheckedUpdateManyInput = {
   device?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -378,6 +435,9 @@ export type QrScanCountOrderByAggregateInput = {
   device?: Prisma.SortOrder
   country?: Prisma.SortOrder
   city?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  language?: Prisma.SortOrder
+  referer?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -390,6 +450,9 @@ export type QrScanMaxOrderByAggregateInput = {
   device?: Prisma.SortOrder
   country?: Prisma.SortOrder
   city?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  language?: Prisma.SortOrder
+  referer?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -402,6 +465,9 @@ export type QrScanMinOrderByAggregateInput = {
   device?: Prisma.SortOrder
   country?: Prisma.SortOrder
   city?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  language?: Prisma.SortOrder
+  referer?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -455,6 +521,9 @@ export type QrScanCreateWithoutQrCodeInput = {
   device?: string | null
   country?: string | null
   city?: string | null
+  region?: string | null
+  language?: string | null
+  referer?: string | null
   createdAt?: Date | string
 }
 
@@ -466,6 +535,9 @@ export type QrScanUncheckedCreateWithoutQrCodeInput = {
   device?: string | null
   country?: string | null
   city?: string | null
+  region?: string | null
+  language?: string | null
+  referer?: string | null
   createdAt?: Date | string
 }
 
@@ -507,6 +579,9 @@ export type QrScanScalarWhereInput = {
   device?: Prisma.StringNullableFilter<"QrScan"> | string | null
   country?: Prisma.StringNullableFilter<"QrScan"> | string | null
   city?: Prisma.StringNullableFilter<"QrScan"> | string | null
+  region?: Prisma.StringNullableFilter<"QrScan"> | string | null
+  language?: Prisma.StringNullableFilter<"QrScan"> | string | null
+  referer?: Prisma.StringNullableFilter<"QrScan"> | string | null
   createdAt?: Prisma.DateTimeFilter<"QrScan"> | Date | string
 }
 
@@ -518,6 +593,9 @@ export type QrScanCreateManyQrCodeInput = {
   device?: string | null
   country?: string | null
   city?: string | null
+  region?: string | null
+  language?: string | null
+  referer?: string | null
   createdAt?: Date | string
 }
 
@@ -529,6 +607,9 @@ export type QrScanUpdateWithoutQrCodeInput = {
   device?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -540,6 +621,9 @@ export type QrScanUncheckedUpdateWithoutQrCodeInput = {
   device?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -551,6 +635,9 @@ export type QrScanUncheckedUpdateManyWithoutQrCodeInput = {
   device?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  language?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -565,6 +652,9 @@ export type QrScanSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   device?: boolean
   country?: boolean
   city?: boolean
+  region?: boolean
+  language?: boolean
+  referer?: boolean
   createdAt?: boolean
   qrCode?: boolean | Prisma.QrCodeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["qrScan"]>
@@ -578,6 +668,9 @@ export type QrScanSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   device?: boolean
   country?: boolean
   city?: boolean
+  region?: boolean
+  language?: boolean
+  referer?: boolean
   createdAt?: boolean
   qrCode?: boolean | Prisma.QrCodeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["qrScan"]>
@@ -591,6 +684,9 @@ export type QrScanSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   device?: boolean
   country?: boolean
   city?: boolean
+  region?: boolean
+  language?: boolean
+  referer?: boolean
   createdAt?: boolean
   qrCode?: boolean | Prisma.QrCodeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["qrScan"]>
@@ -604,10 +700,13 @@ export type QrScanSelectScalar = {
   device?: boolean
   country?: boolean
   city?: boolean
+  region?: boolean
+  language?: boolean
+  referer?: boolean
   createdAt?: boolean
 }
 
-export type QrScanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "qrCodeId" | "userAgent" | "browser" | "os" | "device" | "country" | "city" | "createdAt", ExtArgs["result"]["qrScan"]>
+export type QrScanOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "qrCodeId" | "userAgent" | "browser" | "os" | "device" | "country" | "city" | "region" | "language" | "referer" | "createdAt", ExtArgs["result"]["qrScan"]>
 export type QrScanInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   qrCode?: boolean | Prisma.QrCodeDefaultArgs<ExtArgs>
 }
@@ -632,6 +731,9 @@ export type $QrScanPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     device: string | null
     country: string | null
     city: string | null
+    region: string | null
+    language: string | null
+    referer: string | null
     createdAt: Date
   }, ExtArgs["result"]["qrScan"]>
   composites: {}
@@ -1065,6 +1167,9 @@ export interface QrScanFieldRefs {
   readonly device: Prisma.FieldRef<"QrScan", 'String'>
   readonly country: Prisma.FieldRef<"QrScan", 'String'>
   readonly city: Prisma.FieldRef<"QrScan", 'String'>
+  readonly region: Prisma.FieldRef<"QrScan", 'String'>
+  readonly language: Prisma.FieldRef<"QrScan", 'String'>
+  readonly referer: Prisma.FieldRef<"QrScan", 'String'>
   readonly createdAt: Prisma.FieldRef<"QrScan", 'DateTime'>
 }
     

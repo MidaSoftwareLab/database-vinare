@@ -577,6 +577,20 @@ export type EnumQrCodeStatusFieldUpdateOperationsInput = {
   set?: $Enums.QrCodeStatus
 }
 
+export type QrCodeCreateNestedOneWithoutScansInput = {
+  create?: Prisma.XOR<Prisma.QrCodeCreateWithoutScansInput, Prisma.QrCodeUncheckedCreateWithoutScansInput>
+  connectOrCreate?: Prisma.QrCodeCreateOrConnectWithoutScansInput
+  connect?: Prisma.QrCodeWhereUniqueInput
+}
+
+export type QrCodeUpdateOneRequiredWithoutScansNestedInput = {
+  create?: Prisma.XOR<Prisma.QrCodeCreateWithoutScansInput, Prisma.QrCodeUncheckedCreateWithoutScansInput>
+  connectOrCreate?: Prisma.QrCodeCreateOrConnectWithoutScansInput
+  upsert?: Prisma.QrCodeUpsertWithoutScansInput
+  connect?: Prisma.QrCodeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.QrCodeUpdateToOneWithWhereWithoutScansInput, Prisma.QrCodeUpdateWithoutScansInput>, Prisma.QrCodeUncheckedUpdateWithoutScansInput>
+}
+
 export type QrCodeCreateNestedManyWithoutChatbotInput = {
   create?: Prisma.XOR<Prisma.QrCodeCreateWithoutChatbotInput, Prisma.QrCodeUncheckedCreateWithoutChatbotInput> | Prisma.QrCodeCreateWithoutChatbotInput[] | Prisma.QrCodeUncheckedCreateWithoutChatbotInput[]
   connectOrCreate?: Prisma.QrCodeCreateOrConnectWithoutChatbotInput | Prisma.QrCodeCreateOrConnectWithoutChatbotInput[]
@@ -617,20 +631,6 @@ export type QrCodeUncheckedUpdateManyWithoutChatbotNestedInput = {
   update?: Prisma.QrCodeUpdateWithWhereUniqueWithoutChatbotInput | Prisma.QrCodeUpdateWithWhereUniqueWithoutChatbotInput[]
   updateMany?: Prisma.QrCodeUpdateManyWithWhereWithoutChatbotInput | Prisma.QrCodeUpdateManyWithWhereWithoutChatbotInput[]
   deleteMany?: Prisma.QrCodeScalarWhereInput | Prisma.QrCodeScalarWhereInput[]
-}
-
-export type QrCodeCreateNestedOneWithoutScansInput = {
-  create?: Prisma.XOR<Prisma.QrCodeCreateWithoutScansInput, Prisma.QrCodeUncheckedCreateWithoutScansInput>
-  connectOrCreate?: Prisma.QrCodeCreateOrConnectWithoutScansInput
-  connect?: Prisma.QrCodeWhereUniqueInput
-}
-
-export type QrCodeUpdateOneRequiredWithoutScansNestedInput = {
-  create?: Prisma.XOR<Prisma.QrCodeCreateWithoutScansInput, Prisma.QrCodeUncheckedCreateWithoutScansInput>
-  connectOrCreate?: Prisma.QrCodeCreateOrConnectWithoutScansInput
-  upsert?: Prisma.QrCodeUpsertWithoutScansInput
-  connect?: Prisma.QrCodeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.QrCodeUpdateToOneWithWhereWithoutScansInput, Prisma.QrCodeUpdateWithoutScansInput>, Prisma.QrCodeUncheckedUpdateWithoutScansInput>
 }
 
 export type QrCodeCreateWithoutOrganizationInput = {
@@ -707,62 +707,6 @@ export type QrCodeScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"QrCode"> | Date | string
 }
 
-export type QrCodeCreateWithoutChatbotInput = {
-  id?: string
-  name: string
-  description?: string | null
-  publicCode: string
-  scanCount?: number
-  lastScannedAt?: Date | string | null
-  status?: $Enums.QrCodeStatus
-  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  organization: Prisma.OrganizationCreateNestedOneWithoutQrCodesInput
-  scans?: Prisma.QrScanCreateNestedManyWithoutQrCodeInput
-}
-
-export type QrCodeUncheckedCreateWithoutChatbotInput = {
-  id?: string
-  organizationId: string
-  name: string
-  description?: string | null
-  publicCode: string
-  scanCount?: number
-  lastScannedAt?: Date | string | null
-  status?: $Enums.QrCodeStatus
-  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  scans?: Prisma.QrScanUncheckedCreateNestedManyWithoutQrCodeInput
-}
-
-export type QrCodeCreateOrConnectWithoutChatbotInput = {
-  where: Prisma.QrCodeWhereUniqueInput
-  create: Prisma.XOR<Prisma.QrCodeCreateWithoutChatbotInput, Prisma.QrCodeUncheckedCreateWithoutChatbotInput>
-}
-
-export type QrCodeCreateManyChatbotInputEnvelope = {
-  data: Prisma.QrCodeCreateManyChatbotInput | Prisma.QrCodeCreateManyChatbotInput[]
-  skipDuplicates?: boolean
-}
-
-export type QrCodeUpsertWithWhereUniqueWithoutChatbotInput = {
-  where: Prisma.QrCodeWhereUniqueInput
-  update: Prisma.XOR<Prisma.QrCodeUpdateWithoutChatbotInput, Prisma.QrCodeUncheckedUpdateWithoutChatbotInput>
-  create: Prisma.XOR<Prisma.QrCodeCreateWithoutChatbotInput, Prisma.QrCodeUncheckedCreateWithoutChatbotInput>
-}
-
-export type QrCodeUpdateWithWhereUniqueWithoutChatbotInput = {
-  where: Prisma.QrCodeWhereUniqueInput
-  data: Prisma.XOR<Prisma.QrCodeUpdateWithoutChatbotInput, Prisma.QrCodeUncheckedUpdateWithoutChatbotInput>
-}
-
-export type QrCodeUpdateManyWithWhereWithoutChatbotInput = {
-  where: Prisma.QrCodeScalarWhereInput
-  data: Prisma.XOR<Prisma.QrCodeUpdateManyMutationInput, Prisma.QrCodeUncheckedUpdateManyWithoutChatbotInput>
-}
-
 export type QrCodeCreateWithoutScansInput = {
   id?: string
   name: string
@@ -837,6 +781,62 @@ export type QrCodeUncheckedUpdateWithoutScansInput = {
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type QrCodeCreateWithoutChatbotInput = {
+  id?: string
+  name: string
+  description?: string | null
+  publicCode: string
+  scanCount?: number
+  lastScannedAt?: Date | string | null
+  status?: $Enums.QrCodeStatus
+  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  organization: Prisma.OrganizationCreateNestedOneWithoutQrCodesInput
+  scans?: Prisma.QrScanCreateNestedManyWithoutQrCodeInput
+}
+
+export type QrCodeUncheckedCreateWithoutChatbotInput = {
+  id?: string
+  organizationId: string
+  name: string
+  description?: string | null
+  publicCode: string
+  scanCount?: number
+  lastScannedAt?: Date | string | null
+  status?: $Enums.QrCodeStatus
+  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  scans?: Prisma.QrScanUncheckedCreateNestedManyWithoutQrCodeInput
+}
+
+export type QrCodeCreateOrConnectWithoutChatbotInput = {
+  where: Prisma.QrCodeWhereUniqueInput
+  create: Prisma.XOR<Prisma.QrCodeCreateWithoutChatbotInput, Prisma.QrCodeUncheckedCreateWithoutChatbotInput>
+}
+
+export type QrCodeCreateManyChatbotInputEnvelope = {
+  data: Prisma.QrCodeCreateManyChatbotInput | Prisma.QrCodeCreateManyChatbotInput[]
+  skipDuplicates?: boolean
+}
+
+export type QrCodeUpsertWithWhereUniqueWithoutChatbotInput = {
+  where: Prisma.QrCodeWhereUniqueInput
+  update: Prisma.XOR<Prisma.QrCodeUpdateWithoutChatbotInput, Prisma.QrCodeUncheckedUpdateWithoutChatbotInput>
+  create: Prisma.XOR<Prisma.QrCodeCreateWithoutChatbotInput, Prisma.QrCodeUncheckedCreateWithoutChatbotInput>
+}
+
+export type QrCodeUpdateWithWhereUniqueWithoutChatbotInput = {
+  where: Prisma.QrCodeWhereUniqueInput
+  data: Prisma.XOR<Prisma.QrCodeUpdateWithoutChatbotInput, Prisma.QrCodeUncheckedUpdateWithoutChatbotInput>
+}
+
+export type QrCodeUpdateManyWithWhereWithoutChatbotInput = {
+  where: Prisma.QrCodeScalarWhereInput
+  data: Prisma.XOR<Prisma.QrCodeUpdateManyMutationInput, Prisma.QrCodeUncheckedUpdateManyWithoutChatbotInput>
 }
 
 export type QrCodeCreateManyOrganizationInput = {
