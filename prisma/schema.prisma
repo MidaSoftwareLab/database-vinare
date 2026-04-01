@@ -25,6 +25,7 @@ enum Permission {
   qrcode
   billings
   chatbot
+  agents
 }
 
 model User {
@@ -119,6 +120,9 @@ model Organization {
   // Qr
   qrCodes  QrCode[]
   chatbots Chatbot[]
+
+  // Agents
+  agents Agent[]
 
   @@unique([slug])
   @@map("organization")
@@ -254,6 +258,41 @@ model Chatbot {
   @@unique([organizationId, name])
   @@index([organizationId])
   @@map("chatbot")
+}
+
+model Agent {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  name         String
+  description  String?
+  systemPrompt String  @default("")
+  language     String  @default("it")
+  publicCode   String  @unique
+
+  // Commerce Configuration
+  providerType   String // "shopify" | "woocommerce" | "magento"
+  storeUrl       String // "https://myshop.myshopify.com"
+  storeName      String?
+  storeCurrency  String   @default("EUR")
+  storePolicy    String? // Policy text (returns, shipping) for system prompt enrichment
+  encryptedCreds String // JSON encrypted with AES-256-GCM
+  allowedDomains String[] // Authorized domains for CORS + embed
+
+  // Feature flags
+  ecommerceEnabled Boolean @default(true)
+
+  // Stats
+  scanCount     Int       @default(0)
+  lastScannedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([organizationId, name])
+  @@index([organizationId])
+  @@map("agent")
 }
 
 // ============================================================================
