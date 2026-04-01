@@ -73,6 +73,11 @@ export type QrScan = Prisma.QrScanModel
  */
 export type Chatbot = Prisma.ChatbotModel
 /**
+ * Model Agent
+ * 
+ */
+export type Agent = Prisma.AgentModel
+/**
  * Model WineLinePrompt
  * 
  */

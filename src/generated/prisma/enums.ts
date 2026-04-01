@@ -21,7 +21,8 @@ export const Permission = {
   dashboard: 'dashboard',
   qrcode: 'qrcode',
   billings: 'billings',
-  chatbot: 'chatbot'
+  chatbot: 'chatbot',
+  agents: 'agents'
 } as const
 
 export type Permission = (typeof Permission)[keyof typeof Permission]

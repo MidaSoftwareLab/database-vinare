@@ -283,6 +283,10 @@ model Agent {
   // Feature flags
   ecommerceEnabled Boolean @default(true)
 
+  // Appearance
+  logoUrl      String?
+  primaryColor String?
+
   // Stats
   scanCount     Int       @default(0)
   lastScannedAt DateTime?

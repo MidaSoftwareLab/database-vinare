@@ -395,6 +395,7 @@ export const ModelName = {
   QrCode: 'QrCode',
   QrScan: 'QrScan',
   Chatbot: 'Chatbot',
+  Agent: 'Agent',
   WineLinePrompt: 'WineLinePrompt',
   ChatConversation: 'ChatConversation',
   ChatMessage: 'ChatMessage',
@@ -415,7 +416,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "organization" | "billingProfile" | "member" | "invitation" | "qrCode" | "qrScan" | "chatbot" | "wineLinePrompt" | "chatConversation" | "chatMessage" | "conversationEmbedding" | "conversationAnalytics"
+    modelProps: "user" | "session" | "account" | "verification" | "organization" | "billingProfile" | "member" | "invitation" | "qrCode" | "qrScan" | "chatbot" | "agent" | "wineLinePrompt" | "chatConversation" | "chatMessage" | "conversationEmbedding" | "conversationAnalytics"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1233,6 +1234,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Agent: {
+      payload: Prisma.$AgentPayload<ExtArgs>
+      fields: Prisma.AgentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AgentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AgentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload>
+        }
+        findFirst: {
+          args: Prisma.AgentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AgentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload>
+        }
+        findMany: {
+          args: Prisma.AgentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload>[]
+        }
+        create: {
+          args: Prisma.AgentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload>
+        }
+        createMany: {
+          args: Prisma.AgentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AgentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload>[]
+        }
+        delete: {
+          args: Prisma.AgentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload>
+        }
+        update: {
+          args: Prisma.AgentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload>
+        }
+        deleteMany: {
+          args: Prisma.AgentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AgentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AgentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload>[]
+        }
+        upsert: {
+          args: Prisma.AgentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentPayload>
+        }
+        aggregate: {
+          args: Prisma.AgentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAgent>
+        }
+        groupBy: {
+          args: Prisma.AgentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AgentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AgentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AgentCountAggregateOutputType> | number
+        }
+      }
+    }
     WineLinePrompt: {
       payload: Prisma.$WineLinePromptPayload<ExtArgs>
       fields: Prisma.WineLinePromptFieldRefs
@@ -1805,6 +1880,33 @@ export const ChatbotScalarFieldEnum = {
 export type ChatbotScalarFieldEnum = (typeof ChatbotScalarFieldEnum)[keyof typeof ChatbotScalarFieldEnum]
 
 
+export const AgentScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  name: 'name',
+  description: 'description',
+  systemPrompt: 'systemPrompt',
+  language: 'language',
+  publicCode: 'publicCode',
+  providerType: 'providerType',
+  storeUrl: 'storeUrl',
+  storeName: 'storeName',
+  storeCurrency: 'storeCurrency',
+  storePolicy: 'storePolicy',
+  encryptedCreds: 'encryptedCreds',
+  allowedDomains: 'allowedDomains',
+  ecommerceEnabled: 'ecommerceEnabled',
+  logoUrl: 'logoUrl',
+  primaryColor: 'primaryColor',
+  scanCount: 'scanCount',
+  lastScannedAt: 'lastScannedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AgentScalarFieldEnum = (typeof AgentScalarFieldEnum)[keyof typeof AgentScalarFieldEnum]
+
+
 export const WineLinePromptScalarFieldEnum = {
   wineLineId: 'wineLineId',
   lang: 'lang',
@@ -2143,6 +2245,7 @@ export type GlobalOmitConfig = {
   qrCode?: Prisma.QrCodeOmit
   qrScan?: Prisma.QrScanOmit
   chatbot?: Prisma.ChatbotOmit
+  agent?: Prisma.AgentOmit
   wineLinePrompt?: Prisma.WineLinePromptOmit
   chatConversation?: Prisma.ChatConversationOmit
   chatMessage?: Prisma.ChatMessageOmit

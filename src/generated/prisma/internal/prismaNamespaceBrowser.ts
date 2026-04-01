@@ -62,6 +62,7 @@ export const ModelName = {
   QrCode: 'QrCode',
   QrScan: 'QrScan',
   Chatbot: 'Chatbot',
+  Agent: 'Agent',
   WineLinePrompt: 'WineLinePrompt',
   ChatConversation: 'ChatConversation',
   ChatMessage: 'ChatMessage',
@@ -262,6 +263,33 @@ export const ChatbotScalarFieldEnum = {
 } as const
 
 export type ChatbotScalarFieldEnum = (typeof ChatbotScalarFieldEnum)[keyof typeof ChatbotScalarFieldEnum]
+
+
+export const AgentScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  name: 'name',
+  description: 'description',
+  systemPrompt: 'systemPrompt',
+  language: 'language',
+  publicCode: 'publicCode',
+  providerType: 'providerType',
+  storeUrl: 'storeUrl',
+  storeName: 'storeName',
+  storeCurrency: 'storeCurrency',
+  storePolicy: 'storePolicy',
+  encryptedCreds: 'encryptedCreds',
+  allowedDomains: 'allowedDomains',
+  ecommerceEnabled: 'ecommerceEnabled',
+  logoUrl: 'logoUrl',
+  primaryColor: 'primaryColor',
+  scanCount: 'scanCount',
+  lastScannedAt: 'lastScannedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AgentScalarFieldEnum = (typeof AgentScalarFieldEnum)[keyof typeof AgentScalarFieldEnum]
 
 
 export const WineLinePromptScalarFieldEnum = {
