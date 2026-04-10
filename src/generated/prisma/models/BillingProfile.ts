@@ -221,7 +221,7 @@ export type BillingProfileGroupByOutputType = {
   _max: BillingProfileMaxAggregateOutputType | null
 }
 
-type GetBillingProfileGroupByPayload<T extends BillingProfileGroupByArgs> = Prisma.PrismaPromise<
+export type GetBillingProfileGroupByPayload<T extends BillingProfileGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<BillingProfileGroupByOutputType, T['by']> &
       {
@@ -1360,6 +1360,11 @@ export type BillingProfileFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` BillingProfiles.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of BillingProfiles.
+   */
   distinct?: Prisma.BillingProfileScalarFieldEnum | Prisma.BillingProfileScalarFieldEnum[]
 }
 

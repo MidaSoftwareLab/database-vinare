@@ -67,7 +67,12 @@ export const ModelName = {
   ChatConversation: 'ChatConversation',
   ChatMessage: 'ChatMessage',
   ConversationEmbedding: 'ConversationEmbedding',
-  ConversationAnalytics: 'ConversationAnalytics'
+  ConversationAnalytics: 'ConversationAnalytics',
+  OrgConfigurationsDashboard: 'OrgConfigurationsDashboard',
+  FeedbackRecord: 'FeedbackRecord',
+  FeedbackEmbedding: 'FeedbackEmbedding',
+  FeedbackMlProfile: 'FeedbackMlProfile',
+  FeedbackDimensionScore: 'FeedbackDimensionScore'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -371,6 +376,100 @@ export const ConversationAnalyticsScalarFieldEnum = {
 } as const
 
 export type ConversationAnalyticsScalarFieldEnum = (typeof ConversationAnalyticsScalarFieldEnum)[keyof typeof ConversationAnalyticsScalarFieldEnum]
+
+
+export const OrgConfigurationsDashboardScalarFieldEnum = {
+  organizationId: 'organizationId',
+  dimensionsBlobUri: 'dimensionsBlobUri',
+  scraperConfigBlobUri: 'scraperConfigBlobUri',
+  baselinesBlobUri: 'baselinesBlobUri',
+  nClusters: 'nClusters',
+  lastExtractionAt: 'lastExtractionAt',
+  lastEvaluationAt: 'lastEvaluationAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OrgConfigurationsDashboardScalarFieldEnum = (typeof OrgConfigurationsDashboardScalarFieldEnum)[keyof typeof OrgConfigurationsDashboardScalarFieldEnum]
+
+
+export const FeedbackRecordScalarFieldEnum = {
+  id: 'id',
+  organizationId: 'organizationId',
+  source: 'source',
+  sourceId: 'sourceId',
+  content: 'content',
+  rating: 'rating',
+  metadata: 'metadata',
+  language: 'language',
+  contentHash: 'contentHash',
+  sourceCreatedAt: 'sourceCreatedAt',
+  ingestedAt: 'ingestedAt',
+  clusterId: 'clusterId',
+  personaName: 'personaName',
+  pcaX: 'pcaX',
+  pcaY: 'pcaY',
+  primaryIntent: 'primaryIntent',
+  technicality: 'technicality',
+  buyingIntent: 'buyingIntent',
+  palateProfile: 'palateProfile',
+  occasionLogic: 'occasionLogic',
+  evaluatedAt: 'evaluatedAt'
+} as const
+
+export type FeedbackRecordScalarFieldEnum = (typeof FeedbackRecordScalarFieldEnum)[keyof typeof FeedbackRecordScalarFieldEnum]
+
+
+export const FeedbackEmbeddingScalarFieldEnum = {
+  id: 'id',
+  feedbackRecordId: 'feedbackRecordId',
+  createdAt: 'createdAt'
+} as const
+
+export type FeedbackEmbeddingScalarFieldEnum = (typeof FeedbackEmbeddingScalarFieldEnum)[keyof typeof FeedbackEmbeddingScalarFieldEnum]
+
+
+export const FeedbackMlProfileScalarFieldEnum = {
+  id: 'id',
+  feedbackRecordId: 'feedbackRecordId',
+  clusterId: 'clusterId',
+  personaName: 'personaName',
+  primaryIntent: 'primaryIntent',
+  segmentationStatus: 'segmentationStatus',
+  segmentationScope: 'segmentationScope',
+  exclusionReason: 'exclusionReason',
+  namingRationale: 'namingRationale',
+  namingConfidence: 'namingConfidence',
+  dominantDimensions: 'dominantDimensions',
+  dominantPoles: 'dominantPoles',
+  pcaX: 'pcaX',
+  pcaY: 'pcaY',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FeedbackMlProfileScalarFieldEnum = (typeof FeedbackMlProfileScalarFieldEnum)[keyof typeof FeedbackMlProfileScalarFieldEnum]
+
+
+export const FeedbackDimensionScoreScalarFieldEnum = {
+  id: 'id',
+  feedbackRecordId: 'feedbackRecordId',
+  dimensionId: 'dimensionId',
+  dimensionKey: 'dimensionKey',
+  dimensionName: 'dimensionName',
+  rawScore: 'rawScore',
+  normalizedScore: 'normalizedScore',
+  pole1: 'pole1',
+  pole2: 'pole2',
+  dominantPole: 'dominantPole',
+  isNeutral: 'isNeutral',
+  ciLow: 'ciLow',
+  ciHigh: 'ciHigh',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FeedbackDimensionScoreScalarFieldEnum = (typeof FeedbackDimensionScoreScalarFieldEnum)[keyof typeof FeedbackDimensionScoreScalarFieldEnum]
 
 
 export const SortOrder = {

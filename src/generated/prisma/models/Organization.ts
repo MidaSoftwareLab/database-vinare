@@ -207,7 +207,7 @@ export type OrganizationGroupByOutputType = {
   _max: OrganizationMaxAggregateOutputType | null
 }
 
-type GetOrganizationGroupByPayload<T extends OrganizationGroupByArgs> = Prisma.PrismaPromise<
+export type GetOrganizationGroupByPayload<T extends OrganizationGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<OrganizationGroupByOutputType, T['by']> &
       {
@@ -244,6 +244,8 @@ export type OrganizationWhereInput = {
   qrCodes?: Prisma.QrCodeListRelationFilter
   chatbots?: Prisma.ChatbotListRelationFilter
   agents?: Prisma.AgentListRelationFilter
+  dashboardConfig?: Prisma.XOR<Prisma.OrgConfigurationsDashboardNullableScalarRelationFilter, Prisma.OrgConfigurationsDashboardWhereInput> | null
+  feedbackRecords?: Prisma.FeedbackRecordListRelationFilter
 }
 
 export type OrganizationOrderByWithRelationInput = {
@@ -265,6 +267,8 @@ export type OrganizationOrderByWithRelationInput = {
   qrCodes?: Prisma.QrCodeOrderByRelationAggregateInput
   chatbots?: Prisma.ChatbotOrderByRelationAggregateInput
   agents?: Prisma.AgentOrderByRelationAggregateInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardOrderByWithRelationInput
+  feedbackRecords?: Prisma.FeedbackRecordOrderByRelationAggregateInput
 }
 
 export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
@@ -289,6 +293,8 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   qrCodes?: Prisma.QrCodeListRelationFilter
   chatbots?: Prisma.ChatbotListRelationFilter
   agents?: Prisma.AgentListRelationFilter
+  dashboardConfig?: Prisma.XOR<Prisma.OrgConfigurationsDashboardNullableScalarRelationFilter, Prisma.OrgConfigurationsDashboardWhereInput> | null
+  feedbackRecords?: Prisma.FeedbackRecordListRelationFilter
 }, "id" | "stripeCustomerId" | "stripeSubscriptionId" | "slug">
 
 export type OrganizationOrderByWithAggregationInput = {
@@ -346,6 +352,8 @@ export type OrganizationCreateInput = {
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateInput = {
@@ -367,6 +375,8 @@ export type OrganizationUncheckedCreateInput = {
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentUncheckedCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUpdateInput = {
@@ -388,6 +398,8 @@ export type OrganizationUpdateInput = {
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateInput = {
@@ -409,6 +421,8 @@ export type OrganizationUncheckedUpdateInput = {
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUncheckedUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyInput = {
@@ -590,6 +604,34 @@ export type OrganizationUpdateOneRequiredWithoutAgentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutAgentsInput, Prisma.OrganizationUpdateWithoutAgentsInput>, Prisma.OrganizationUncheckedUpdateWithoutAgentsInput>
 }
 
+export type OrganizationCreateNestedOneWithoutDashboardConfigInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutDashboardConfigInput, Prisma.OrganizationUncheckedCreateWithoutDashboardConfigInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutDashboardConfigInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutDashboardConfigNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutDashboardConfigInput, Prisma.OrganizationUncheckedCreateWithoutDashboardConfigInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutDashboardConfigInput
+  upsert?: Prisma.OrganizationUpsertWithoutDashboardConfigInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutDashboardConfigInput, Prisma.OrganizationUpdateWithoutDashboardConfigInput>, Prisma.OrganizationUncheckedUpdateWithoutDashboardConfigInput>
+}
+
+export type OrganizationCreateNestedOneWithoutFeedbackRecordsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutFeedbackRecordsInput, Prisma.OrganizationUncheckedCreateWithoutFeedbackRecordsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutFeedbackRecordsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutFeedbackRecordsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutFeedbackRecordsInput, Prisma.OrganizationUncheckedCreateWithoutFeedbackRecordsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutFeedbackRecordsInput
+  upsert?: Prisma.OrganizationUpsertWithoutFeedbackRecordsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutFeedbackRecordsInput, Prisma.OrganizationUpdateWithoutFeedbackRecordsInput>, Prisma.OrganizationUncheckedUpdateWithoutFeedbackRecordsInput>
+}
+
 export type OrganizationCreateWithoutBillingProfileInput = {
   id: string
   name: string
@@ -608,6 +650,8 @@ export type OrganizationCreateWithoutBillingProfileInput = {
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutBillingProfileInput = {
@@ -628,6 +672,8 @@ export type OrganizationUncheckedCreateWithoutBillingProfileInput = {
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentUncheckedCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutBillingProfileInput = {
@@ -664,6 +710,8 @@ export type OrganizationUpdateWithoutBillingProfileInput = {
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutBillingProfileInput = {
@@ -684,6 +732,8 @@ export type OrganizationUncheckedUpdateWithoutBillingProfileInput = {
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUncheckedUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutMembersInput = {
@@ -704,6 +754,8 @@ export type OrganizationCreateWithoutMembersInput = {
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutMembersInput = {
@@ -724,6 +776,8 @@ export type OrganizationUncheckedCreateWithoutMembersInput = {
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentUncheckedCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMembersInput = {
@@ -760,6 +814,8 @@ export type OrganizationUpdateWithoutMembersInput = {
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMembersInput = {
@@ -780,6 +836,8 @@ export type OrganizationUncheckedUpdateWithoutMembersInput = {
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUncheckedUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutInvitationsInput = {
@@ -800,6 +858,8 @@ export type OrganizationCreateWithoutInvitationsInput = {
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutInvitationsInput = {
@@ -820,6 +880,8 @@ export type OrganizationUncheckedCreateWithoutInvitationsInput = {
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentUncheckedCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutInvitationsInput = {
@@ -856,6 +918,8 @@ export type OrganizationUpdateWithoutInvitationsInput = {
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutInvitationsInput = {
@@ -876,6 +940,8 @@ export type OrganizationUncheckedUpdateWithoutInvitationsInput = {
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUncheckedUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutQrCodesInput = {
@@ -896,6 +962,8 @@ export type OrganizationCreateWithoutQrCodesInput = {
   billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutQrCodesInput = {
@@ -916,6 +984,8 @@ export type OrganizationUncheckedCreateWithoutQrCodesInput = {
   billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentUncheckedCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutQrCodesInput = {
@@ -952,6 +1022,8 @@ export type OrganizationUpdateWithoutQrCodesInput = {
   billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutQrCodesInput = {
@@ -972,6 +1044,8 @@ export type OrganizationUncheckedUpdateWithoutQrCodesInput = {
   billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUncheckedUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutChatbotsInput = {
@@ -992,6 +1066,8 @@ export type OrganizationCreateWithoutChatbotsInput = {
   billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutChatbotsInput = {
@@ -1012,6 +1088,8 @@ export type OrganizationUncheckedCreateWithoutChatbotsInput = {
   billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
   agents?: Prisma.AgentUncheckedCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutChatbotsInput = {
@@ -1048,6 +1126,8 @@ export type OrganizationUpdateWithoutChatbotsInput = {
   billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutChatbotsInput = {
@@ -1068,6 +1148,8 @@ export type OrganizationUncheckedUpdateWithoutChatbotsInput = {
   billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
   agents?: Prisma.AgentUncheckedUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutAgentsInput = {
@@ -1088,6 +1170,8 @@ export type OrganizationCreateWithoutAgentsInput = {
   billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutAgentsInput = {
@@ -1108,6 +1192,8 @@ export type OrganizationUncheckedCreateWithoutAgentsInput = {
   billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
   qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
   chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedCreateNestedOneWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutAgentsInput = {
@@ -1144,6 +1230,8 @@ export type OrganizationUpdateWithoutAgentsInput = {
   billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutAgentsInput = {
@@ -1164,6 +1252,216 @@ export type OrganizationUncheckedUpdateWithoutAgentsInput = {
   billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
   qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
   chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedUpdateOneWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutDashboardConfigInput = {
+  id: string
+  name: string
+  slug?: string | null
+  logo?: string | null
+  createdAt: Date | string
+  metadata?: string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeStatus?: string | null
+  stripeCurrentPeriodEnd?: Date | string | null
+  stripePriceId?: string | null
+  stripeCancelAtPeriodEnd?: boolean
+  members?: Prisma.MemberCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
+  chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
+  agents?: Prisma.AgentCreateNestedManyWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutDashboardConfigInput = {
+  id: string
+  name: string
+  slug?: string | null
+  logo?: string | null
+  createdAt: Date | string
+  metadata?: string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeStatus?: string | null
+  stripeCurrentPeriodEnd?: Date | string | null
+  stripePriceId?: string | null
+  stripeCancelAtPeriodEnd?: boolean
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
+  chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
+  agents?: Prisma.AgentUncheckedCreateNestedManyWithoutOrganizationInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutDashboardConfigInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutDashboardConfigInput, Prisma.OrganizationUncheckedCreateWithoutDashboardConfigInput>
+}
+
+export type OrganizationUpsertWithoutDashboardConfigInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutDashboardConfigInput, Prisma.OrganizationUncheckedUpdateWithoutDashboardConfigInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutDashboardConfigInput, Prisma.OrganizationUncheckedCreateWithoutDashboardConfigInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutDashboardConfigInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutDashboardConfigInput, Prisma.OrganizationUncheckedUpdateWithoutDashboardConfigInput>
+}
+
+export type OrganizationUpdateWithoutDashboardConfigInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metadata?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  members?: Prisma.MemberUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
+  chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
+  agents?: Prisma.AgentUpdateManyWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutDashboardConfigInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metadata?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  members?: Prisma.MemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
+  chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
+  agents?: Prisma.AgentUncheckedUpdateManyWithoutOrganizationNestedInput
+  feedbackRecords?: Prisma.FeedbackRecordUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutFeedbackRecordsInput = {
+  id: string
+  name: string
+  slug?: string | null
+  logo?: string | null
+  createdAt: Date | string
+  metadata?: string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeStatus?: string | null
+  stripeCurrentPeriodEnd?: Date | string | null
+  stripePriceId?: string | null
+  stripeCancelAtPeriodEnd?: boolean
+  members?: Prisma.MemberCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileCreateNestedOneWithoutOrganizationInput
+  qrCodes?: Prisma.QrCodeCreateNestedManyWithoutOrganizationInput
+  chatbots?: Prisma.ChatbotCreateNestedManyWithoutOrganizationInput
+  agents?: Prisma.AgentCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardCreateNestedOneWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutFeedbackRecordsInput = {
+  id: string
+  name: string
+  slug?: string | null
+  logo?: string | null
+  createdAt: Date | string
+  metadata?: string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeStatus?: string | null
+  stripeCurrentPeriodEnd?: Date | string | null
+  stripePriceId?: string | null
+  stripeCancelAtPeriodEnd?: boolean
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutOrganizationInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutOrganizationInput
+  billingProfile?: Prisma.BillingProfileUncheckedCreateNestedOneWithoutOrganizationInput
+  qrCodes?: Prisma.QrCodeUncheckedCreateNestedManyWithoutOrganizationInput
+  chatbots?: Prisma.ChatbotUncheckedCreateNestedManyWithoutOrganizationInput
+  agents?: Prisma.AgentUncheckedCreateNestedManyWithoutOrganizationInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedCreateNestedOneWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutFeedbackRecordsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutFeedbackRecordsInput, Prisma.OrganizationUncheckedCreateWithoutFeedbackRecordsInput>
+}
+
+export type OrganizationUpsertWithoutFeedbackRecordsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutFeedbackRecordsInput, Prisma.OrganizationUncheckedUpdateWithoutFeedbackRecordsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutFeedbackRecordsInput, Prisma.OrganizationUncheckedCreateWithoutFeedbackRecordsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutFeedbackRecordsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutFeedbackRecordsInput, Prisma.OrganizationUncheckedUpdateWithoutFeedbackRecordsInput>
+}
+
+export type OrganizationUpdateWithoutFeedbackRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metadata?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  members?: Prisma.MemberUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUpdateOneWithoutOrganizationNestedInput
+  qrCodes?: Prisma.QrCodeUpdateManyWithoutOrganizationNestedInput
+  chatbots?: Prisma.ChatbotUpdateManyWithoutOrganizationNestedInput
+  agents?: Prisma.AgentUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUpdateOneWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutFeedbackRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  metadata?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCurrentPeriodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripePriceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeCancelAtPeriodEnd?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  members?: Prisma.MemberUncheckedUpdateManyWithoutOrganizationNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutOrganizationNestedInput
+  billingProfile?: Prisma.BillingProfileUncheckedUpdateOneWithoutOrganizationNestedInput
+  qrCodes?: Prisma.QrCodeUncheckedUpdateManyWithoutOrganizationNestedInput
+  chatbots?: Prisma.ChatbotUncheckedUpdateManyWithoutOrganizationNestedInput
+  agents?: Prisma.AgentUncheckedUpdateManyWithoutOrganizationNestedInput
+  dashboardConfig?: Prisma.OrgConfigurationsDashboardUncheckedUpdateOneWithoutOrganizationNestedInput
 }
 
 
@@ -1177,6 +1475,7 @@ export type OrganizationCountOutputType = {
   qrCodes: number
   chatbots: number
   agents: number
+  feedbackRecords: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1185,6 +1484,7 @@ export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Exte
   qrCodes?: boolean | OrganizationCountOutputTypeCountQrCodesArgs
   chatbots?: boolean | OrganizationCountOutputTypeCountChatbotsArgs
   agents?: boolean | OrganizationCountOutputTypeCountAgentsArgs
+  feedbackRecords?: boolean | OrganizationCountOutputTypeCountFeedbackRecordsArgs
 }
 
 /**
@@ -1232,6 +1532,13 @@ export type OrganizationCountOutputTypeCountAgentsArgs<ExtArgs extends runtime.T
   where?: Prisma.AgentWhereInput
 }
 
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountFeedbackRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FeedbackRecordWhereInput
+}
+
 
 export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1252,6 +1559,8 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   qrCodes?: boolean | Prisma.Organization$qrCodesArgs<ExtArgs>
   chatbots?: boolean | Prisma.Organization$chatbotsArgs<ExtArgs>
   agents?: boolean | Prisma.Organization$agentsArgs<ExtArgs>
+  dashboardConfig?: boolean | Prisma.Organization$dashboardConfigArgs<ExtArgs>
+  feedbackRecords?: boolean | Prisma.Organization$feedbackRecordsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
@@ -1308,6 +1617,8 @@ export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.Interna
   qrCodes?: boolean | Prisma.Organization$qrCodesArgs<ExtArgs>
   chatbots?: boolean | Prisma.Organization$chatbotsArgs<ExtArgs>
   agents?: boolean | Prisma.Organization$agentsArgs<ExtArgs>
+  dashboardConfig?: boolean | Prisma.Organization$dashboardConfigArgs<ExtArgs>
+  feedbackRecords?: boolean | Prisma.Organization$feedbackRecordsArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1322,6 +1633,8 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     qrCodes: Prisma.$QrCodePayload<ExtArgs>[]
     chatbots: Prisma.$ChatbotPayload<ExtArgs>[]
     agents: Prisma.$AgentPayload<ExtArgs>[]
+    dashboardConfig: Prisma.$OrgConfigurationsDashboardPayload<ExtArgs> | null
+    feedbackRecords: Prisma.$FeedbackRecordPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1736,6 +2049,8 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   qrCodes<T extends Prisma.Organization$qrCodesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$qrCodesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QrCodePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   chatbots<T extends Prisma.Organization$chatbotsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$chatbotsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatbotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   agents<T extends Prisma.Organization$agentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$agentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AgentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  dashboardConfig<T extends Prisma.Organization$dashboardConfigArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$dashboardConfigArgs<ExtArgs>>): Prisma.Prisma__OrgConfigurationsDashboardClient<runtime.Types.Result.GetResult<Prisma.$OrgConfigurationsDashboardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  feedbackRecords<T extends Prisma.Organization$feedbackRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$feedbackRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeedbackRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1973,6 +2288,11 @@ export type OrganizationFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` Organizations.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Organizations.
+   */
   distinct?: Prisma.OrganizationScalarFieldEnum | Prisma.OrganizationScalarFieldEnum[]
 }
 
@@ -2301,6 +2621,49 @@ export type Organization$agentsArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.AgentScalarFieldEnum | Prisma.AgentScalarFieldEnum[]
+}
+
+/**
+ * Organization.dashboardConfig
+ */
+export type Organization$dashboardConfigArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the OrgConfigurationsDashboard
+   */
+  select?: Prisma.OrgConfigurationsDashboardSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the OrgConfigurationsDashboard
+   */
+  omit?: Prisma.OrgConfigurationsDashboardOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.OrgConfigurationsDashboardInclude<ExtArgs> | null
+  where?: Prisma.OrgConfigurationsDashboardWhereInput
+}
+
+/**
+ * Organization.feedbackRecords
+ */
+export type Organization$feedbackRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FeedbackRecord
+   */
+  select?: Prisma.FeedbackRecordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FeedbackRecord
+   */
+  omit?: Prisma.FeedbackRecordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FeedbackRecordInclude<ExtArgs> | null
+  where?: Prisma.FeedbackRecordWhereInput
+  orderBy?: Prisma.FeedbackRecordOrderByWithRelationInput | Prisma.FeedbackRecordOrderByWithRelationInput[]
+  cursor?: Prisma.FeedbackRecordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FeedbackRecordScalarFieldEnum | Prisma.FeedbackRecordScalarFieldEnum[]
 }
 
 /**

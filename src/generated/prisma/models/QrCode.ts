@@ -237,7 +237,7 @@ export type QrCodeGroupByOutputType = {
   _max: QrCodeMaxAggregateOutputType | null
 }
 
-type GetQrCodeGroupByPayload<T extends QrCodeGroupByArgs> = Prisma.PrismaPromise<
+export type GetQrCodeGroupByPayload<T extends QrCodeGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<QrCodeGroupByOutputType, T['by']> &
       {
@@ -1724,6 +1724,11 @@ export type QrCodeFindManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Skip the first `n` QrCodes.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of QrCodes.
+   */
   distinct?: Prisma.QrCodeScalarFieldEnum | Prisma.QrCodeScalarFieldEnum[]
 }
 

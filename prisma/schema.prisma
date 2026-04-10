@@ -15,6 +15,8 @@ datasource db {
   extensions = [vector]
 }
 
+//region Enums
+
 enum QrCodeStatus {
   active
   disabled
@@ -28,6 +30,7 @@ enum Permission {
   agents
 }
 
+//region WebApp
 model User {
   id            String    @id
   name          String
@@ -123,6 +126,10 @@ model Organization {
 
   // Agents
   agents Agent[]
+
+  // Personae Analytics
+  dashboardConfig OrgConfigurationsDashboard?
+  feedbackRecords FeedbackRecord[]
 
   @@unique([slug])
   @@map("organization")
@@ -299,6 +306,8 @@ model Agent {
   @@map("agent")
 }
 
+//region Azure Services
+
 // ============================================================================
 // SOMMELIER-VIRTUALE TABLES (EXTERNAL PYTHON BACKEND)
 // Coexist alongside Prisma tables but were historically managed by SQL.
@@ -409,4 +418,126 @@ model ConversationAnalytics {
   conversation ChatConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
 
   @@map("conversation_analytics")
+}
+
+// ============================================================================
+// PERSONAE ANALYTICS & EMBEDDINGS (NEW - UNIFIED FEEDBACK)
+// ============================================================================
+
+model OrgConfigurationsDashboard {
+  organizationId       String       @id @map("organization_id")
+  organization         Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  dimensionsBlobUri    String?      @map("dimensions_blob_uri")
+  scraperConfigBlobUri String?      @map("scraper_config_blob_uri")
+  baselinesBlobUri     String?      @map("baselines_blob_uri")
+  nClusters            Int          @default(6) @map("n_clusters")
+  lastExtractionAt     DateTime?    @map("last_extraction_at")
+  lastEvaluationAt     DateTime?    @map("last_evaluation_at")
+  createdAt            DateTime     @default(now()) @map("created_at")
+  updatedAt            DateTime     @default(now()) @updatedAt @map("updated_at")
+
+  @@map("org_configurations_dashboard")
+}
+
+model FeedbackRecord {
+  id              String       @id
+  organizationId  String       @map("organization_id")
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  source          String
+  sourceId        String       @map("source_id")
+  content         String
+  rating          Float?
+  metadata        Json?
+  language        String       @default("en")
+  contentHash     String?      @map("content_hash")
+  sourceCreatedAt DateTime?    @map("source_created_at")
+  ingestedAt      DateTime     @default(now()) @map("ingested_at")
+
+  clusterId     Int?      @map("cluster_id")
+  personaName   String?   @map("persona_name")
+  pcaX          Float?    @map("pca_x")
+  pcaY          Float?    @map("pca_y")
+  primaryIntent String?   @map("primary_intent")
+  technicality  Float?
+  buyingIntent  Float?    @map("buying_intent")
+  palateProfile Float?    @map("palate_profile")
+  occasionLogic Float?    @map("occasion_logic")
+  evaluatedAt   DateTime? @map("evaluated_at")
+
+  embedding       FeedbackEmbedding?
+  mlProfile       FeedbackMlProfile?
+  dimensionScores FeedbackDimensionScore[]
+
+  @@unique([organizationId, source, sourceId])
+  @@index([organizationId], map: "idx_feedback_record_org_id")
+  @@index([organizationId, source], map: "idx_feedback_record_org_source")
+  @@index([organizationId, contentHash], map: "idx_feedback_record_org_content_hash")
+  // For picking up stale evaluations
+  @@map("feedback_record")
+}
+
+model FeedbackEmbedding {
+  id               String                       @id
+  feedbackRecordId String                       @unique @map("feedback_record_id")
+  feedbackRecord   FeedbackRecord               @relation(fields: [feedbackRecordId], references: [id], onDelete: Cascade)
+  embedding        Unsupported("vector(3072)")?
+  createdAt        DateTime                     @default(now()) @map("created_at")
+
+  @@map("feedback_embedding")
+}
+
+model FeedbackMlProfile {
+  id               String         @id
+  feedbackRecordId String         @unique @map("feedback_record_id")
+  feedbackRecord   FeedbackRecord @relation(fields: [feedbackRecordId], references: [id], onDelete: Cascade)
+
+  clusterId     Int?    @map("cluster_id")
+  personaName   String? @map("persona_name")
+  primaryIntent String? @map("primary_intent")
+
+  segmentationStatus String  @map("segmentation_status")
+  segmentationScope  String  @map("segmentation_scope")
+  exclusionReason    String? @map("exclusion_reason")
+
+  namingRationale    String? @map("naming_rationale")
+  namingConfidence   Float?  @map("naming_confidence")
+  dominantDimensions Json?   @map("dominant_dimensions")
+  dominantPoles      Json?   @map("dominant_poles")
+
+  pcaX Float? @map("pca_x")
+  pcaY Float? @map("pca_y")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@index([personaName], map: "idx_feedback_ml_profile_persona")
+  @@index([segmentationStatus], map: "idx_feedback_ml_profile_seg_status")
+  @@map("feedback_ml_profile")
+}
+
+model FeedbackDimensionScore {
+  id               String         @id
+  feedbackRecordId String         @map("feedback_record_id")
+  feedbackRecord   FeedbackRecord @relation(fields: [feedbackRecordId], references: [id], onDelete: Cascade)
+
+  dimensionId   Int    @map("dimension_id")
+  dimensionKey  String @map("dimension_key")
+  dimensionName String @map("dimension_name")
+
+  rawScore        Float?  @map("raw_score")
+  normalizedScore Float?  @map("normalized_score")
+  pole1           String  @map("pole_1")
+  pole2           String  @map("pole_2")
+  dominantPole    String? @map("dominant_pole")
+  isNeutral       Boolean @default(false) @map("is_neutral")
+  ciLow           Float?  @map("ci_low")
+  ciHigh          Float?  @map("ci_high")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@unique([feedbackRecordId, dimensionKey])
+  @@index([dimensionKey], map: "idx_feedback_dimension_score_dim_key")
+  @@index([feedbackRecordId], map: "idx_feedback_dimension_score_record_id")
+  @@map("feedback_dimension_score")
 }

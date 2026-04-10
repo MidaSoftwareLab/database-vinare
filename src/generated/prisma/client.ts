@@ -126,3 +126,28 @@ export type ConversationEmbedding = Prisma.ConversationEmbeddingModel
  * 
  */
 export type ConversationAnalytics = Prisma.ConversationAnalyticsModel
+/**
+ * Model OrgConfigurationsDashboard
+ * 
+ */
+export type OrgConfigurationsDashboard = Prisma.OrgConfigurationsDashboardModel
+/**
+ * Model FeedbackRecord
+ * 
+ */
+export type FeedbackRecord = Prisma.FeedbackRecordModel
+/**
+ * Model FeedbackEmbedding
+ * 
+ */
+export type FeedbackEmbedding = Prisma.FeedbackEmbeddingModel
+/**
+ * Model FeedbackMlProfile
+ * 
+ */
+export type FeedbackMlProfile = Prisma.FeedbackMlProfileModel
+/**
+ * Model FeedbackDimensionScore
+ * 
+ */
+export type FeedbackDimensionScore = Prisma.FeedbackDimensionScoreModel
