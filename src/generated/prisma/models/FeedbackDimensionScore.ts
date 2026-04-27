@@ -278,7 +278,7 @@ export type FeedbackDimensionScoreGroupByOutputType = {
   _max: FeedbackDimensionScoreMaxAggregateOutputType | null
 }
 
-export type GetFeedbackDimensionScoreGroupByPayload<T extends FeedbackDimensionScoreGroupByArgs> = Prisma.PrismaPromise<
+type GetFeedbackDimensionScoreGroupByPayload<T extends FeedbackDimensionScoreGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<FeedbackDimensionScoreGroupByOutputType, T['by']> &
       {
@@ -1546,11 +1546,6 @@ export type FeedbackDimensionScoreFindManyArgs<ExtArgs extends runtime.Types.Ext
    * Skip the first `n` FeedbackDimensionScores.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of FeedbackDimensionScores.
-   */
   distinct?: Prisma.FeedbackDimensionScoreScalarFieldEnum | Prisma.FeedbackDimensionScoreScalarFieldEnum[]
 }
 

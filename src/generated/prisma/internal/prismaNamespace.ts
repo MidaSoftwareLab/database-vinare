@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.7.0
- * Query Engine version: 75cbdc1eb7150937890ad5465d861175c6624711
+ * Prisma Client JS version: 7.4.2
+ * Query Engine version: 94a226be1cf2967af2541cca5529f0f7ba866919
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.7.0",
-  engine: "75cbdc1eb7150937890ad5465d861175c6624711"
+  client: "7.4.2",
+  engine: "94a226be1cf2967af2541cca5529f0f7ba866919"
 }
 
 /**
@@ -405,7 +405,9 @@ export const ModelName = {
   FeedbackRecord: 'FeedbackRecord',
   FeedbackEmbedding: 'FeedbackEmbedding',
   FeedbackMlProfile: 'FeedbackMlProfile',
-  FeedbackDimensionScore: 'FeedbackDimensionScore'
+  FeedbackDimensionScore: 'FeedbackDimensionScore',
+  AgentConversation: 'AgentConversation',
+  AgentMessage: 'AgentMessage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -421,7 +423,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "organization" | "billingProfile" | "member" | "invitation" | "qrCode" | "qrScan" | "chatbot" | "agent" | "wineLinePrompt" | "chatConversation" | "chatMessage" | "conversationEmbedding" | "conversationAnalytics" | "orgConfigurationsDashboard" | "feedbackRecord" | "feedbackEmbedding" | "feedbackMlProfile" | "feedbackDimensionScore"
+    modelProps: "user" | "session" | "account" | "verification" | "organization" | "billingProfile" | "member" | "invitation" | "qrCode" | "qrScan" | "chatbot" | "agent" | "wineLinePrompt" | "chatConversation" | "chatMessage" | "conversationEmbedding" | "conversationAnalytics" | "orgConfigurationsDashboard" | "feedbackRecord" | "feedbackEmbedding" | "feedbackMlProfile" | "feedbackDimensionScore" | "agentConversation" | "agentMessage"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2037,6 +2039,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    AgentConversation: {
+      payload: Prisma.$AgentConversationPayload<ExtArgs>
+      fields: Prisma.AgentConversationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AgentConversationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AgentConversationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload>
+        }
+        findFirst: {
+          args: Prisma.AgentConversationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AgentConversationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload>
+        }
+        findMany: {
+          args: Prisma.AgentConversationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload>[]
+        }
+        create: {
+          args: Prisma.AgentConversationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload>
+        }
+        createMany: {
+          args: Prisma.AgentConversationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AgentConversationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload>[]
+        }
+        delete: {
+          args: Prisma.AgentConversationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload>
+        }
+        update: {
+          args: Prisma.AgentConversationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload>
+        }
+        deleteMany: {
+          args: Prisma.AgentConversationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AgentConversationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AgentConversationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload>[]
+        }
+        upsert: {
+          args: Prisma.AgentConversationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentConversationPayload>
+        }
+        aggregate: {
+          args: Prisma.AgentConversationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAgentConversation>
+        }
+        groupBy: {
+          args: Prisma.AgentConversationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AgentConversationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AgentConversationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AgentConversationCountAggregateOutputType> | number
+        }
+      }
+    }
+    AgentMessage: {
+      payload: Prisma.$AgentMessagePayload<ExtArgs>
+      fields: Prisma.AgentMessageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AgentMessageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AgentMessageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload>
+        }
+        findFirst: {
+          args: Prisma.AgentMessageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AgentMessageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload>
+        }
+        findMany: {
+          args: Prisma.AgentMessageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload>[]
+        }
+        create: {
+          args: Prisma.AgentMessageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload>
+        }
+        createMany: {
+          args: Prisma.AgentMessageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AgentMessageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload>[]
+        }
+        delete: {
+          args: Prisma.AgentMessageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload>
+        }
+        update: {
+          args: Prisma.AgentMessageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload>
+        }
+        deleteMany: {
+          args: Prisma.AgentMessageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AgentMessageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AgentMessageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload>[]
+        }
+        upsert: {
+          args: Prisma.AgentMessageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AgentMessagePayload>
+        }
+        aggregate: {
+          args: Prisma.AgentMessageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAgentMessage>
+        }
+        groupBy: {
+          args: Prisma.AgentMessageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AgentMessageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AgentMessageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AgentMessageCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2457,6 +2607,47 @@ export const FeedbackDimensionScoreScalarFieldEnum = {
 export type FeedbackDimensionScoreScalarFieldEnum = (typeof FeedbackDimensionScoreScalarFieldEnum)[keyof typeof FeedbackDimensionScoreScalarFieldEnum]
 
 
+export const AgentConversationScalarFieldEnum = {
+  id: 'id',
+  publicId: 'publicId',
+  organizationId: 'organizationId',
+  agentId: 'agentId',
+  providerType: 'providerType',
+  mode: 'mode',
+  userLang: 'userLang',
+  status: 'status',
+  cartId: 'cartId',
+  cartMetadata: 'cartMetadata',
+  metadata: 'metadata',
+  nextSeq: 'nextSeq',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AgentConversationScalarFieldEnum = (typeof AgentConversationScalarFieldEnum)[keyof typeof AgentConversationScalarFieldEnum]
+
+
+export const AgentMessageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  seq: 'seq',
+  role: 'role',
+  content: 'content',
+  toolCallId: 'toolCallId',
+  toolName: 'toolName',
+  model: 'model',
+  temperature: 'temperature',
+  maxTokens: 'maxTokens',
+  promptTokens: 'promptTokens',
+  completionTokens: 'completionTokens',
+  totalTokens: 'totalTokens',
+  latencyMs: 'latencyMs',
+  createdAt: 'createdAt'
+} as const
+
+export type AgentMessageScalarFieldEnum = (typeof AgentMessageScalarFieldEnum)[keyof typeof AgentMessageScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2471,6 +2662,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
@@ -2725,6 +2923,8 @@ export type GlobalOmitConfig = {
   feedbackEmbedding?: Prisma.FeedbackEmbeddingOmit
   feedbackMlProfile?: Prisma.FeedbackMlProfileOmit
   feedbackDimensionScore?: Prisma.FeedbackDimensionScoreOmit
+  agentConversation?: Prisma.AgentConversationOmit
+  agentMessage?: Prisma.AgentMessageOmit
 }
 
 /* Types for Logging */

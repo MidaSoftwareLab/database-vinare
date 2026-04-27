@@ -126,6 +126,7 @@ model Organization {
 
   // Agents
   agents Agent[]
+  agentConversations AgentConversation[]
 
   // Personae Analytics
   dashboardConfig OrgConfigurationsDashboard?
@@ -540,4 +541,60 @@ model FeedbackDimensionScore {
   @@index([dimensionKey], map: "idx_feedback_dimension_score_dim_key")
   @@index([feedbackRecordId], map: "idx_feedback_dimension_score_record_id")
   @@map("feedback_dimension_score")
+}
+
+//region E-commerce Agent
+
+model AgentConversation {
+  id              String       @id
+  publicId        String       @unique @map("public_id")
+  organizationId  String       @map("organization_id")
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  
+  agentId         String       @map("agent_id") @db.VarChar(128)
+  providerType    String       @map("provider_type") @db.VarChar(32)
+  mode            String       @default("embedded") @db.VarChar(16)
+  userLang        String       @default("en") @map("user_lang") @db.VarChar(8)
+  status          String       @default("active") @db.VarChar(16)
+  
+  cartId          String?      @map("cart_id")
+  cartMetadata    Json         @default("{}") @map("cart_metadata")
+  metadata        Json         @default("{}")
+  nextSeq         Int          @default(0) @map("next_seq")
+  
+  createdAt       DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime     @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  messages        AgentMessage[]
+
+  @@index([organizationId])
+  @@index([agentId])
+  @@map("agent_conversation")
+}
+
+model AgentMessage {
+  id               String            @id
+  conversationId   String            @map("conversation_id")
+  conversation     AgentConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  
+  seq              Int
+  role             String            @db.VarChar(16)
+  content          String
+  
+  toolCallId       String?           @map("tool_call_id")
+  toolName         String?           @map("tool_name") @db.VarChar(128)
+  
+  model            String?           @db.VarChar(128)
+  temperature      Float?            @db.Real
+  maxTokens        Int?              @map("max_tokens")
+  promptTokens     Int?              @map("prompt_tokens")
+  completionTokens Int?              @map("completion_tokens")
+  totalTokens      Int?              @map("total_tokens")
+  latencyMs        Int?              @map("latency_ms")
+  
+  createdAt        DateTime          @default(now()) @map("created_at") @db.Timestamptz
+
+  @@unique([conversationId, seq])
+  @@index([conversationId, seq])
+  @@map("agent_message")
 }

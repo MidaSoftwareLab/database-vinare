@@ -151,3 +151,13 @@ export type FeedbackMlProfile = Prisma.FeedbackMlProfileModel
  * 
  */
 export type FeedbackDimensionScore = Prisma.FeedbackDimensionScoreModel
+/**
+ * Model AgentConversation
+ * 
+ */
+export type AgentConversation = Prisma.AgentConversationModel
+/**
+ * Model AgentMessage
+ * 
+ */
+export type AgentMessage = Prisma.AgentMessageModel

@@ -72,7 +72,9 @@ export const ModelName = {
   FeedbackRecord: 'FeedbackRecord',
   FeedbackEmbedding: 'FeedbackEmbedding',
   FeedbackMlProfile: 'FeedbackMlProfile',
-  FeedbackDimensionScore: 'FeedbackDimensionScore'
+  FeedbackDimensionScore: 'FeedbackDimensionScore',
+  AgentConversation: 'AgentConversation',
+  AgentMessage: 'AgentMessage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -472,6 +474,47 @@ export const FeedbackDimensionScoreScalarFieldEnum = {
 export type FeedbackDimensionScoreScalarFieldEnum = (typeof FeedbackDimensionScoreScalarFieldEnum)[keyof typeof FeedbackDimensionScoreScalarFieldEnum]
 
 
+export const AgentConversationScalarFieldEnum = {
+  id: 'id',
+  publicId: 'publicId',
+  organizationId: 'organizationId',
+  agentId: 'agentId',
+  providerType: 'providerType',
+  mode: 'mode',
+  userLang: 'userLang',
+  status: 'status',
+  cartId: 'cartId',
+  cartMetadata: 'cartMetadata',
+  metadata: 'metadata',
+  nextSeq: 'nextSeq',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AgentConversationScalarFieldEnum = (typeof AgentConversationScalarFieldEnum)[keyof typeof AgentConversationScalarFieldEnum]
+
+
+export const AgentMessageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  seq: 'seq',
+  role: 'role',
+  content: 'content',
+  toolCallId: 'toolCallId',
+  toolName: 'toolName',
+  model: 'model',
+  temperature: 'temperature',
+  maxTokens: 'maxTokens',
+  promptTokens: 'promptTokens',
+  completionTokens: 'completionTokens',
+  totalTokens: 'totalTokens',
+  latencyMs: 'latencyMs',
+  createdAt: 'createdAt'
+} as const
+
+export type AgentMessageScalarFieldEnum = (typeof AgentMessageScalarFieldEnum)[keyof typeof AgentMessageScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -486,6 +529,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {
