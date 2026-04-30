@@ -30,6 +30,10 @@ enum Permission {
   agents
 }
 
+enum AgentKind {
+  ecommerce
+}
+
 //region WebApp
 model User {
   id            String    @id
@@ -125,7 +129,7 @@ model Organization {
   chatbots Chatbot[]
 
   // Agents
-  agents Agent[]
+  agents             Agent[]
   agentConversations AgentConversation[]
 
   // Personae Analytics
@@ -275,9 +279,10 @@ model Agent {
 
   name         String
   description  String?
-  systemPrompt String  @default("")
-  language     String  @default("it")
-  publicCode   String  @unique
+  systemPrompt String    @default("")
+  language     String    @default("it")
+  publicCode   String    @unique
+  kind         AgentKind @default(ecommerce)
 
   // Commerce Configuration
   providerType   String // "shopify" | "woocommerce" | "magento"
@@ -302,7 +307,7 @@ model Agent {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([organizationId, name])
+  @@unique([organizationId, kind])
   @@index([organizationId])
   @@map("agent")
 }
@@ -546,26 +551,26 @@ model FeedbackDimensionScore {
 //region E-commerce Agent
 
 model AgentConversation {
-  id              String       @id
-  publicId        String       @unique @map("public_id")
-  organizationId  String       @map("organization_id")
-  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  
-  agentId         String       @map("agent_id") @db.VarChar(128)
-  providerType    String       @map("provider_type") @db.VarChar(32)
-  mode            String       @default("embedded") @db.VarChar(16)
-  userLang        String       @default("en") @map("user_lang") @db.VarChar(8)
-  status          String       @default("active") @db.VarChar(16)
-  
-  cartId          String?      @map("cart_id")
-  cartMetadata    Json         @default("{}") @map("cart_metadata")
-  metadata        Json         @default("{}")
-  nextSeq         Int          @default(0) @map("next_seq")
-  
-  createdAt       DateTime     @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt       DateTime     @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+  id             String       @id
+  publicId       String       @unique @map("public_id")
+  organizationId String       @map("organization_id")
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
-  messages        AgentMessage[]
+  agentId      String @map("agent_id") @db.VarChar(128)
+  providerType String @map("provider_type") @db.VarChar(32)
+  mode         String @default("embedded") @db.VarChar(16)
+  userLang     String @default("en") @map("user_lang") @db.VarChar(8)
+  status       String @default("active") @db.VarChar(16)
+
+  cartId       String? @map("cart_id")
+  cartMetadata Json    @default("{}") @map("cart_metadata")
+  metadata     Json    @default("{}")
+  nextSeq      Int     @default(0) @map("next_seq")
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  messages AgentMessage[]
 
   @@index([organizationId])
   @@index([agentId])
@@ -573,26 +578,26 @@ model AgentConversation {
 }
 
 model AgentMessage {
-  id               String            @id
-  conversationId   String            @map("conversation_id")
-  conversation     AgentConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  
-  seq              Int
-  role             String            @db.VarChar(16)
-  content          String
-  
-  toolCallId       String?           @map("tool_call_id")
-  toolName         String?           @map("tool_name") @db.VarChar(128)
-  
-  model            String?           @db.VarChar(128)
-  temperature      Float?            @db.Real
-  maxTokens        Int?              @map("max_tokens")
-  promptTokens     Int?              @map("prompt_tokens")
-  completionTokens Int?              @map("completion_tokens")
-  totalTokens      Int?              @map("total_tokens")
-  latencyMs        Int?              @map("latency_ms")
-  
-  createdAt        DateTime          @default(now()) @map("created_at") @db.Timestamptz
+  id             String            @id
+  conversationId String            @map("conversation_id")
+  conversation   AgentConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  seq     Int
+  role    String @db.VarChar(16)
+  content String
+
+  toolCallId String? @map("tool_call_id")
+  toolName   String? @map("tool_name") @db.VarChar(128)
+
+  model            String? @db.VarChar(128)
+  temperature      Float?  @db.Real
+  maxTokens        Int?    @map("max_tokens")
+  promptTokens     Int?    @map("prompt_tokens")
+  completionTokens Int?    @map("completion_tokens")
+  totalTokens      Int?    @map("total_tokens")
+  latencyMs        Int?    @map("latency_ms")
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
 
   @@unique([conversationId, seq])
   @@index([conversationId, seq])

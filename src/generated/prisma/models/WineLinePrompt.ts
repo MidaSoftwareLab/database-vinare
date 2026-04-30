@@ -158,7 +158,7 @@ export type WineLinePromptGroupByOutputType = {
   _max: WineLinePromptMaxAggregateOutputType | null
 }
 
-type GetWineLinePromptGroupByPayload<T extends WineLinePromptGroupByArgs> = Prisma.PrismaPromise<
+export type GetWineLinePromptGroupByPayload<T extends WineLinePromptGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<WineLinePromptGroupByOutputType, T['by']> &
       {
@@ -960,6 +960,11 @@ export type WineLinePromptFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` WineLinePrompts.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of WineLinePrompts.
+   */
   distinct?: Prisma.WineLinePromptScalarFieldEnum | Prisma.WineLinePromptScalarFieldEnum[]
 }
 

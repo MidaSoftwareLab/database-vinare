@@ -328,7 +328,7 @@ export type FeedbackRecordGroupByOutputType = {
   _max: FeedbackRecordMaxAggregateOutputType | null
 }
 
-type GetFeedbackRecordGroupByPayload<T extends FeedbackRecordGroupByArgs> = Prisma.PrismaPromise<
+export type GetFeedbackRecordGroupByPayload<T extends FeedbackRecordGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<FeedbackRecordGroupByOutputType, T['by']> &
       {
@@ -2252,6 +2252,11 @@ export type FeedbackRecordFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` FeedbackRecords.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of FeedbackRecords.
+   */
   distinct?: Prisma.FeedbackRecordScalarFieldEnum | Prisma.FeedbackRecordScalarFieldEnum[]
 }
 

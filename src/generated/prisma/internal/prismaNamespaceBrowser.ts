@@ -280,6 +280,7 @@ export const AgentScalarFieldEnum = {
   systemPrompt: 'systemPrompt',
   language: 'language',
   publicCode: 'publicCode',
+  kind: 'kind',
   providerType: 'providerType',
   storeUrl: 'storeUrl',
   storeName: 'storeName',

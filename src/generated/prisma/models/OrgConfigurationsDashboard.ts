@@ -220,7 +220,7 @@ export type OrgConfigurationsDashboardGroupByOutputType = {
   _max: OrgConfigurationsDashboardMaxAggregateOutputType | null
 }
 
-type GetOrgConfigurationsDashboardGroupByPayload<T extends OrgConfigurationsDashboardGroupByArgs> = Prisma.PrismaPromise<
+export type GetOrgConfigurationsDashboardGroupByPayload<T extends OrgConfigurationsDashboardGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<OrgConfigurationsDashboardGroupByOutputType, T['by']> &
       {
@@ -1244,6 +1244,11 @@ export type OrgConfigurationsDashboardFindManyArgs<ExtArgs extends runtime.Types
    * Skip the first `n` OrgConfigurationsDashboards.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of OrgConfigurationsDashboards.
+   */
   distinct?: Prisma.OrgConfigurationsDashboardScalarFieldEnum | Prisma.OrgConfigurationsDashboardScalarFieldEnum[]
 }
 

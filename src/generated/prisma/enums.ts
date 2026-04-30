@@ -26,3 +26,10 @@ export const Permission = {
 } as const
 
 export type Permission = (typeof Permission)[keyof typeof Permission]
+
+
+export const AgentKind = {
+  ecommerce: 'ecommerce'
+} as const
+
+export type AgentKind = (typeof AgentKind)[keyof typeof AgentKind]

@@ -144,7 +144,7 @@ export type FeedbackEmbeddingGroupByOutputType = {
   _max: FeedbackEmbeddingMaxAggregateOutputType | null
 }
 
-type GetFeedbackEmbeddingGroupByPayload<T extends FeedbackEmbeddingGroupByArgs> = Prisma.PrismaPromise<
+export type GetFeedbackEmbeddingGroupByPayload<T extends FeedbackEmbeddingGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<FeedbackEmbeddingGroupByOutputType, T['by']> &
       {
@@ -1008,6 +1008,11 @@ export type FeedbackEmbeddingFindManyArgs<ExtArgs extends runtime.Types.Extensio
    * Skip the first `n` FeedbackEmbeddings.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of FeedbackEmbeddings.
+   */
   distinct?: Prisma.FeedbackEmbeddingScalarFieldEnum | Prisma.FeedbackEmbeddingScalarFieldEnum[]
 }
 

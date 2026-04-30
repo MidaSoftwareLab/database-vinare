@@ -42,6 +42,7 @@ export type AgentMinAggregateOutputType = {
   systemPrompt: string | null
   language: string | null
   publicCode: string | null
+  kind: $Enums.AgentKind | null
   providerType: string | null
   storeUrl: string | null
   storeName: string | null
@@ -65,6 +66,7 @@ export type AgentMaxAggregateOutputType = {
   systemPrompt: string | null
   language: string | null
   publicCode: string | null
+  kind: $Enums.AgentKind | null
   providerType: string | null
   storeUrl: string | null
   storeName: string | null
@@ -88,6 +90,7 @@ export type AgentCountAggregateOutputType = {
   systemPrompt: number
   language: number
   publicCode: number
+  kind: number
   providerType: number
   storeUrl: number
   storeName: number
@@ -122,6 +125,7 @@ export type AgentMinAggregateInputType = {
   systemPrompt?: true
   language?: true
   publicCode?: true
+  kind?: true
   providerType?: true
   storeUrl?: true
   storeName?: true
@@ -145,6 +149,7 @@ export type AgentMaxAggregateInputType = {
   systemPrompt?: true
   language?: true
   publicCode?: true
+  kind?: true
   providerType?: true
   storeUrl?: true
   storeName?: true
@@ -168,6 +173,7 @@ export type AgentCountAggregateInputType = {
   systemPrompt?: true
   language?: true
   publicCode?: true
+  kind?: true
   providerType?: true
   storeUrl?: true
   storeName?: true
@@ -279,6 +285,7 @@ export type AgentGroupByOutputType = {
   systemPrompt: string
   language: string
   publicCode: string
+  kind: $Enums.AgentKind
   providerType: string
   storeUrl: string
   storeName: string | null
@@ -300,7 +307,7 @@ export type AgentGroupByOutputType = {
   _max: AgentMaxAggregateOutputType | null
 }
 
-type GetAgentGroupByPayload<T extends AgentGroupByArgs> = Prisma.PrismaPromise<
+export type GetAgentGroupByPayload<T extends AgentGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<AgentGroupByOutputType, T['by']> &
       {
@@ -326,6 +333,7 @@ export type AgentWhereInput = {
   systemPrompt?: Prisma.StringFilter<"Agent"> | string
   language?: Prisma.StringFilter<"Agent"> | string
   publicCode?: Prisma.StringFilter<"Agent"> | string
+  kind?: Prisma.EnumAgentKindFilter<"Agent"> | $Enums.AgentKind
   providerType?: Prisma.StringFilter<"Agent"> | string
   storeUrl?: Prisma.StringFilter<"Agent"> | string
   storeName?: Prisma.StringNullableFilter<"Agent"> | string | null
@@ -351,6 +359,7 @@ export type AgentOrderByWithRelationInput = {
   systemPrompt?: Prisma.SortOrder
   language?: Prisma.SortOrder
   publicCode?: Prisma.SortOrder
+  kind?: Prisma.SortOrder
   providerType?: Prisma.SortOrder
   storeUrl?: Prisma.SortOrder
   storeName?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -371,7 +380,7 @@ export type AgentOrderByWithRelationInput = {
 export type AgentWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   publicCode?: string
-  organizationId_name?: Prisma.AgentOrganizationIdNameCompoundUniqueInput
+  organizationId_kind?: Prisma.AgentOrganizationIdKindCompoundUniqueInput
   AND?: Prisma.AgentWhereInput | Prisma.AgentWhereInput[]
   OR?: Prisma.AgentWhereInput[]
   NOT?: Prisma.AgentWhereInput | Prisma.AgentWhereInput[]
@@ -380,6 +389,7 @@ export type AgentWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Agent"> | string | null
   systemPrompt?: Prisma.StringFilter<"Agent"> | string
   language?: Prisma.StringFilter<"Agent"> | string
+  kind?: Prisma.EnumAgentKindFilter<"Agent"> | $Enums.AgentKind
   providerType?: Prisma.StringFilter<"Agent"> | string
   storeUrl?: Prisma.StringFilter<"Agent"> | string
   storeName?: Prisma.StringNullableFilter<"Agent"> | string | null
@@ -395,7 +405,7 @@ export type AgentWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Agent"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Agent"> | Date | string
   organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
-}, "id" | "publicCode" | "organizationId_name">
+}, "id" | "publicCode" | "organizationId_kind">
 
 export type AgentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -405,6 +415,7 @@ export type AgentOrderByWithAggregationInput = {
   systemPrompt?: Prisma.SortOrder
   language?: Prisma.SortOrder
   publicCode?: Prisma.SortOrder
+  kind?: Prisma.SortOrder
   providerType?: Prisma.SortOrder
   storeUrl?: Prisma.SortOrder
   storeName?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -437,6 +448,7 @@ export type AgentScalarWhereWithAggregatesInput = {
   systemPrompt?: Prisma.StringWithAggregatesFilter<"Agent"> | string
   language?: Prisma.StringWithAggregatesFilter<"Agent"> | string
   publicCode?: Prisma.StringWithAggregatesFilter<"Agent"> | string
+  kind?: Prisma.EnumAgentKindWithAggregatesFilter<"Agent"> | $Enums.AgentKind
   providerType?: Prisma.StringWithAggregatesFilter<"Agent"> | string
   storeUrl?: Prisma.StringWithAggregatesFilter<"Agent"> | string
   storeName?: Prisma.StringNullableWithAggregatesFilter<"Agent"> | string | null
@@ -460,6 +472,7 @@ export type AgentCreateInput = {
   systemPrompt?: string
   language?: string
   publicCode: string
+  kind?: $Enums.AgentKind
   providerType: string
   storeUrl: string
   storeName?: string | null
@@ -485,6 +498,7 @@ export type AgentUncheckedCreateInput = {
   systemPrompt?: string
   language?: string
   publicCode: string
+  kind?: $Enums.AgentKind
   providerType: string
   storeUrl: string
   storeName?: string | null
@@ -508,6 +522,7 @@ export type AgentUpdateInput = {
   systemPrompt?: Prisma.StringFieldUpdateOperationsInput | string
   language?: Prisma.StringFieldUpdateOperationsInput | string
   publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  kind?: Prisma.EnumAgentKindFieldUpdateOperationsInput | $Enums.AgentKind
   providerType?: Prisma.StringFieldUpdateOperationsInput | string
   storeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   storeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -533,6 +548,7 @@ export type AgentUncheckedUpdateInput = {
   systemPrompt?: Prisma.StringFieldUpdateOperationsInput | string
   language?: Prisma.StringFieldUpdateOperationsInput | string
   publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  kind?: Prisma.EnumAgentKindFieldUpdateOperationsInput | $Enums.AgentKind
   providerType?: Prisma.StringFieldUpdateOperationsInput | string
   storeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   storeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -557,6 +573,7 @@ export type AgentCreateManyInput = {
   systemPrompt?: string
   language?: string
   publicCode: string
+  kind?: $Enums.AgentKind
   providerType: string
   storeUrl: string
   storeName?: string | null
@@ -580,6 +597,7 @@ export type AgentUpdateManyMutationInput = {
   systemPrompt?: Prisma.StringFieldUpdateOperationsInput | string
   language?: Prisma.StringFieldUpdateOperationsInput | string
   publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  kind?: Prisma.EnumAgentKindFieldUpdateOperationsInput | $Enums.AgentKind
   providerType?: Prisma.StringFieldUpdateOperationsInput | string
   storeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   storeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -604,6 +622,7 @@ export type AgentUncheckedUpdateManyInput = {
   systemPrompt?: Prisma.StringFieldUpdateOperationsInput | string
   language?: Prisma.StringFieldUpdateOperationsInput | string
   publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  kind?: Prisma.EnumAgentKindFieldUpdateOperationsInput | $Enums.AgentKind
   providerType?: Prisma.StringFieldUpdateOperationsInput | string
   storeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   storeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -638,9 +657,9 @@ export type StringNullableListFilter<$PrismaModel = never> = {
   isEmpty?: boolean
 }
 
-export type AgentOrganizationIdNameCompoundUniqueInput = {
+export type AgentOrganizationIdKindCompoundUniqueInput = {
   organizationId: string
-  name: string
+  kind: $Enums.AgentKind
 }
 
 export type AgentCountOrderByAggregateInput = {
@@ -651,6 +670,7 @@ export type AgentCountOrderByAggregateInput = {
   systemPrompt?: Prisma.SortOrder
   language?: Prisma.SortOrder
   publicCode?: Prisma.SortOrder
+  kind?: Prisma.SortOrder
   providerType?: Prisma.SortOrder
   storeUrl?: Prisma.SortOrder
   storeName?: Prisma.SortOrder
@@ -679,6 +699,7 @@ export type AgentMaxOrderByAggregateInput = {
   systemPrompt?: Prisma.SortOrder
   language?: Prisma.SortOrder
   publicCode?: Prisma.SortOrder
+  kind?: Prisma.SortOrder
   providerType?: Prisma.SortOrder
   storeUrl?: Prisma.SortOrder
   storeName?: Prisma.SortOrder
@@ -702,6 +723,7 @@ export type AgentMinOrderByAggregateInput = {
   systemPrompt?: Prisma.SortOrder
   language?: Prisma.SortOrder
   publicCode?: Prisma.SortOrder
+  kind?: Prisma.SortOrder
   providerType?: Prisma.SortOrder
   storeUrl?: Prisma.SortOrder
   storeName?: Prisma.SortOrder
@@ -767,6 +789,10 @@ export type AgentCreateallowedDomainsInput = {
   set: string[]
 }
 
+export type EnumAgentKindFieldUpdateOperationsInput = {
+  set?: $Enums.AgentKind
+}
+
 export type AgentUpdateallowedDomainsInput = {
   set?: string[]
   push?: string | string[]
@@ -779,6 +805,7 @@ export type AgentCreateWithoutOrganizationInput = {
   systemPrompt?: string
   language?: string
   publicCode: string
+  kind?: $Enums.AgentKind
   providerType: string
   storeUrl: string
   storeName?: string | null
@@ -802,6 +829,7 @@ export type AgentUncheckedCreateWithoutOrganizationInput = {
   systemPrompt?: string
   language?: string
   publicCode: string
+  kind?: $Enums.AgentKind
   providerType: string
   storeUrl: string
   storeName?: string | null
@@ -855,6 +883,7 @@ export type AgentScalarWhereInput = {
   systemPrompt?: Prisma.StringFilter<"Agent"> | string
   language?: Prisma.StringFilter<"Agent"> | string
   publicCode?: Prisma.StringFilter<"Agent"> | string
+  kind?: Prisma.EnumAgentKindFilter<"Agent"> | $Enums.AgentKind
   providerType?: Prisma.StringFilter<"Agent"> | string
   storeUrl?: Prisma.StringFilter<"Agent"> | string
   storeName?: Prisma.StringNullableFilter<"Agent"> | string | null
@@ -878,6 +907,7 @@ export type AgentCreateManyOrganizationInput = {
   systemPrompt?: string
   language?: string
   publicCode: string
+  kind?: $Enums.AgentKind
   providerType: string
   storeUrl: string
   storeName?: string | null
@@ -901,6 +931,7 @@ export type AgentUpdateWithoutOrganizationInput = {
   systemPrompt?: Prisma.StringFieldUpdateOperationsInput | string
   language?: Prisma.StringFieldUpdateOperationsInput | string
   publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  kind?: Prisma.EnumAgentKindFieldUpdateOperationsInput | $Enums.AgentKind
   providerType?: Prisma.StringFieldUpdateOperationsInput | string
   storeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   storeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -924,6 +955,7 @@ export type AgentUncheckedUpdateWithoutOrganizationInput = {
   systemPrompt?: Prisma.StringFieldUpdateOperationsInput | string
   language?: Prisma.StringFieldUpdateOperationsInput | string
   publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  kind?: Prisma.EnumAgentKindFieldUpdateOperationsInput | $Enums.AgentKind
   providerType?: Prisma.StringFieldUpdateOperationsInput | string
   storeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   storeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -947,6 +979,7 @@ export type AgentUncheckedUpdateManyWithoutOrganizationInput = {
   systemPrompt?: Prisma.StringFieldUpdateOperationsInput | string
   language?: Prisma.StringFieldUpdateOperationsInput | string
   publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  kind?: Prisma.EnumAgentKindFieldUpdateOperationsInput | $Enums.AgentKind
   providerType?: Prisma.StringFieldUpdateOperationsInput | string
   storeUrl?: Prisma.StringFieldUpdateOperationsInput | string
   storeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -973,6 +1006,7 @@ export type AgentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   systemPrompt?: boolean
   language?: boolean
   publicCode?: boolean
+  kind?: boolean
   providerType?: boolean
   storeUrl?: boolean
   storeName?: boolean
@@ -998,6 +1032,7 @@ export type AgentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   systemPrompt?: boolean
   language?: boolean
   publicCode?: boolean
+  kind?: boolean
   providerType?: boolean
   storeUrl?: boolean
   storeName?: boolean
@@ -1023,6 +1058,7 @@ export type AgentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   systemPrompt?: boolean
   language?: boolean
   publicCode?: boolean
+  kind?: boolean
   providerType?: boolean
   storeUrl?: boolean
   storeName?: boolean
@@ -1048,6 +1084,7 @@ export type AgentSelectScalar = {
   systemPrompt?: boolean
   language?: boolean
   publicCode?: boolean
+  kind?: boolean
   providerType?: boolean
   storeUrl?: boolean
   storeName?: boolean
@@ -1064,7 +1101,7 @@ export type AgentSelectScalar = {
   updatedAt?: boolean
 }
 
-export type AgentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId" | "name" | "description" | "systemPrompt" | "language" | "publicCode" | "providerType" | "storeUrl" | "storeName" | "storeCurrency" | "storePolicy" | "encryptedCreds" | "allowedDomains" | "ecommerceEnabled" | "logoUrl" | "primaryColor" | "scanCount" | "lastScannedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["agent"]>
+export type AgentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId" | "name" | "description" | "systemPrompt" | "language" | "publicCode" | "kind" | "providerType" | "storeUrl" | "storeName" | "storeCurrency" | "storePolicy" | "encryptedCreds" | "allowedDomains" | "ecommerceEnabled" | "logoUrl" | "primaryColor" | "scanCount" | "lastScannedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["agent"]>
 export type AgentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
 }
@@ -1088,6 +1125,7 @@ export type $AgentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     systemPrompt: string
     language: string
     publicCode: string
+    kind: $Enums.AgentKind
     providerType: string
     storeUrl: string
     storeName: string | null
@@ -1533,6 +1571,7 @@ export interface AgentFieldRefs {
   readonly systemPrompt: Prisma.FieldRef<"Agent", 'String'>
   readonly language: Prisma.FieldRef<"Agent", 'String'>
   readonly publicCode: Prisma.FieldRef<"Agent", 'String'>
+  readonly kind: Prisma.FieldRef<"Agent", 'AgentKind'>
   readonly providerType: Prisma.FieldRef<"Agent", 'String'>
   readonly storeUrl: Prisma.FieldRef<"Agent", 'String'>
   readonly storeName: Prisma.FieldRef<"Agent", 'String'>
@@ -1743,6 +1782,11 @@ export type AgentFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Skip the first `n` Agents.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Agents.
+   */
   distinct?: Prisma.AgentScalarFieldEnum | Prisma.AgentScalarFieldEnum[]
 }
 

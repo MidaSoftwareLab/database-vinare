@@ -273,7 +273,7 @@ export type FeedbackMlProfileGroupByOutputType = {
   _max: FeedbackMlProfileMaxAggregateOutputType | null
 }
 
-type GetFeedbackMlProfileGroupByPayload<T extends FeedbackMlProfileGroupByArgs> = Prisma.PrismaPromise<
+export type GetFeedbackMlProfileGroupByPayload<T extends FeedbackMlProfileGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<FeedbackMlProfileGroupByOutputType, T['by']> &
       {
@@ -1474,6 +1474,11 @@ export type FeedbackMlProfileFindManyArgs<ExtArgs extends runtime.Types.Extensio
    * Skip the first `n` FeedbackMlProfiles.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of FeedbackMlProfiles.
+   */
   distinct?: Prisma.FeedbackMlProfileScalarFieldEnum | Prisma.FeedbackMlProfileScalarFieldEnum[]
 }
 
