@@ -250,6 +250,20 @@ export type EnumAgentKindFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumAgentKindFilter<$PrismaModel> | $Enums.AgentKind
 }
 
+export type EnumLauncherStyleFilter<$PrismaModel = never> = {
+  equals?: $Enums.LauncherStyle | Prisma.EnumLauncherStyleFieldRefInput<$PrismaModel>
+  in?: $Enums.LauncherStyle[] | Prisma.ListEnumLauncherStyleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LauncherStyle[] | Prisma.ListEnumLauncherStyleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLauncherStyleFilter<$PrismaModel> | $Enums.LauncherStyle
+}
+
+export type EnumLauncherPositionFilter<$PrismaModel = never> = {
+  equals?: $Enums.LauncherPosition | Prisma.EnumLauncherPositionFieldRefInput<$PrismaModel>
+  in?: $Enums.LauncherPosition[] | Prisma.ListEnumLauncherPositionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LauncherPosition[] | Prisma.ListEnumLauncherPositionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLauncherPositionFilter<$PrismaModel> | $Enums.LauncherPosition
+}
+
 export type EnumAgentKindWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.AgentKind | Prisma.EnumAgentKindFieldRefInput<$PrismaModel>
   in?: $Enums.AgentKind[] | Prisma.ListEnumAgentKindFieldRefInput<$PrismaModel>
@@ -258,6 +272,26 @@ export type EnumAgentKindWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAgentKindFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAgentKindFilter<$PrismaModel>
+}
+
+export type EnumLauncherStyleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LauncherStyle | Prisma.EnumLauncherStyleFieldRefInput<$PrismaModel>
+  in?: $Enums.LauncherStyle[] | Prisma.ListEnumLauncherStyleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LauncherStyle[] | Prisma.ListEnumLauncherStyleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLauncherStyleWithAggregatesFilter<$PrismaModel> | $Enums.LauncherStyle
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLauncherStyleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLauncherStyleFilter<$PrismaModel>
+}
+
+export type EnumLauncherPositionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LauncherPosition | Prisma.EnumLauncherPositionFieldRefInput<$PrismaModel>
+  in?: $Enums.LauncherPosition[] | Prisma.ListEnumLauncherPositionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LauncherPosition[] | Prisma.ListEnumLauncherPositionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLauncherPositionWithAggregatesFilter<$PrismaModel> | $Enums.LauncherPosition
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLauncherPositionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLauncherPositionFilter<$PrismaModel>
 }
 
 export type IntNullableFilter<$PrismaModel = never> = {
@@ -614,6 +648,20 @@ export type NestedEnumAgentKindFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumAgentKindFilter<$PrismaModel> | $Enums.AgentKind
 }
 
+export type NestedEnumLauncherStyleFilter<$PrismaModel = never> = {
+  equals?: $Enums.LauncherStyle | Prisma.EnumLauncherStyleFieldRefInput<$PrismaModel>
+  in?: $Enums.LauncherStyle[] | Prisma.ListEnumLauncherStyleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LauncherStyle[] | Prisma.ListEnumLauncherStyleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLauncherStyleFilter<$PrismaModel> | $Enums.LauncherStyle
+}
+
+export type NestedEnumLauncherPositionFilter<$PrismaModel = never> = {
+  equals?: $Enums.LauncherPosition | Prisma.EnumLauncherPositionFieldRefInput<$PrismaModel>
+  in?: $Enums.LauncherPosition[] | Prisma.ListEnumLauncherPositionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LauncherPosition[] | Prisma.ListEnumLauncherPositionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLauncherPositionFilter<$PrismaModel> | $Enums.LauncherPosition
+}
+
 export type NestedEnumAgentKindWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.AgentKind | Prisma.EnumAgentKindFieldRefInput<$PrismaModel>
   in?: $Enums.AgentKind[] | Prisma.ListEnumAgentKindFieldRefInput<$PrismaModel>
@@ -622,6 +670,26 @@ export type NestedEnumAgentKindWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAgentKindFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAgentKindFilter<$PrismaModel>
+}
+
+export type NestedEnumLauncherStyleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LauncherStyle | Prisma.EnumLauncherStyleFieldRefInput<$PrismaModel>
+  in?: $Enums.LauncherStyle[] | Prisma.ListEnumLauncherStyleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LauncherStyle[] | Prisma.ListEnumLauncherStyleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLauncherStyleWithAggregatesFilter<$PrismaModel> | $Enums.LauncherStyle
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLauncherStyleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLauncherStyleFilter<$PrismaModel>
+}
+
+export type NestedEnumLauncherPositionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LauncherPosition | Prisma.EnumLauncherPositionFieldRefInput<$PrismaModel>
+  in?: $Enums.LauncherPosition[] | Prisma.ListEnumLauncherPositionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LauncherPosition[] | Prisma.ListEnumLauncherPositionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLauncherPositionWithAggregatesFilter<$PrismaModel> | $Enums.LauncherPosition
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLauncherPositionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLauncherPositionFilter<$PrismaModel>
 }
 
 export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {

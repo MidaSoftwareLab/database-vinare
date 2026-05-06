@@ -34,6 +34,18 @@ enum AgentKind {
   ecommerce
 }
 
+enum LauncherStyle {
+  BUBBLE
+  PILL
+  BADGE_AVATAR
+}
+
+enum LauncherPosition {
+  BOTTOM_RIGHT
+  BOTTOM_LEFT
+  BOTTOM_CENTER
+}
+
 //region WebApp
 model User {
   id            String    @id
@@ -279,9 +291,9 @@ model Agent {
 
   name         String
   description  String?
-  systemPrompt String    @default("")
-  language     String    @default("it")
-  publicCode   String    @unique
+  systemPrompt String  @default("")
+  language     String  @default("it")
+  publicCode   String  @unique
   kind         AgentKind @default(ecommerce)
 
   // Commerce Configuration
@@ -296,9 +308,30 @@ model Agent {
   // Feature flags
   ecommerceEnabled Boolean @default(true)
 
-  // Appearance
+  // Appearance — basic
   logoUrl      String?
   primaryColor String?
+
+  // Appearance — personality (Phase 2)
+  botName        String?
+  avatarEmoji    String?  @default("🍷")
+  avatarUrl      String?
+
+  // Appearance — conversation (Phase 2)
+  welcomeMessage    String?
+  suggestionChips   Json?   // array of { label: string, payload?: string } — max 5
+
+  // Appearance — launcher (Phase 2)
+  launcherStyle    LauncherStyle    @default(BUBBLE)
+  launcherPosition LauncherPosition @default(BOTTOM_RIGHT)
+  launcherOffsetX  Int              @default(20)
+  launcherOffsetY  Int              @default(20)
+
+  // Conversion (Phase 3)
+  teaserEnabled     Boolean  @default(false)
+  teaserDelaySec    Int      @default(15)
+  teaserText        String?
+  onboardingEnabled Boolean  @default(false)
 
   // Stats
   scanCount     Int       @default(0)

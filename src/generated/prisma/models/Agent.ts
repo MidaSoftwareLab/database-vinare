@@ -27,10 +27,16 @@ export type AggregateAgent = {
 }
 
 export type AgentAvgAggregateOutputType = {
+  launcherOffsetX: number | null
+  launcherOffsetY: number | null
+  teaserDelaySec: number | null
   scanCount: number | null
 }
 
 export type AgentSumAggregateOutputType = {
+  launcherOffsetX: number | null
+  launcherOffsetY: number | null
+  teaserDelaySec: number | null
   scanCount: number | null
 }
 
@@ -52,6 +58,18 @@ export type AgentMinAggregateOutputType = {
   ecommerceEnabled: boolean | null
   logoUrl: string | null
   primaryColor: string | null
+  botName: string | null
+  avatarEmoji: string | null
+  avatarUrl: string | null
+  welcomeMessage: string | null
+  launcherStyle: $Enums.LauncherStyle | null
+  launcherPosition: $Enums.LauncherPosition | null
+  launcherOffsetX: number | null
+  launcherOffsetY: number | null
+  teaserEnabled: boolean | null
+  teaserDelaySec: number | null
+  teaserText: string | null
+  onboardingEnabled: boolean | null
   scanCount: number | null
   lastScannedAt: Date | null
   createdAt: Date | null
@@ -76,6 +94,18 @@ export type AgentMaxAggregateOutputType = {
   ecommerceEnabled: boolean | null
   logoUrl: string | null
   primaryColor: string | null
+  botName: string | null
+  avatarEmoji: string | null
+  avatarUrl: string | null
+  welcomeMessage: string | null
+  launcherStyle: $Enums.LauncherStyle | null
+  launcherPosition: $Enums.LauncherPosition | null
+  launcherOffsetX: number | null
+  launcherOffsetY: number | null
+  teaserEnabled: boolean | null
+  teaserDelaySec: number | null
+  teaserText: string | null
+  onboardingEnabled: boolean | null
   scanCount: number | null
   lastScannedAt: Date | null
   createdAt: Date | null
@@ -101,6 +131,19 @@ export type AgentCountAggregateOutputType = {
   ecommerceEnabled: number
   logoUrl: number
   primaryColor: number
+  botName: number
+  avatarEmoji: number
+  avatarUrl: number
+  welcomeMessage: number
+  suggestionChips: number
+  launcherStyle: number
+  launcherPosition: number
+  launcherOffsetX: number
+  launcherOffsetY: number
+  teaserEnabled: number
+  teaserDelaySec: number
+  teaserText: number
+  onboardingEnabled: number
   scanCount: number
   lastScannedAt: number
   createdAt: number
@@ -110,10 +153,16 @@ export type AgentCountAggregateOutputType = {
 
 
 export type AgentAvgAggregateInputType = {
+  launcherOffsetX?: true
+  launcherOffsetY?: true
+  teaserDelaySec?: true
   scanCount?: true
 }
 
 export type AgentSumAggregateInputType = {
+  launcherOffsetX?: true
+  launcherOffsetY?: true
+  teaserDelaySec?: true
   scanCount?: true
 }
 
@@ -135,6 +184,18 @@ export type AgentMinAggregateInputType = {
   ecommerceEnabled?: true
   logoUrl?: true
   primaryColor?: true
+  botName?: true
+  avatarEmoji?: true
+  avatarUrl?: true
+  welcomeMessage?: true
+  launcherStyle?: true
+  launcherPosition?: true
+  launcherOffsetX?: true
+  launcherOffsetY?: true
+  teaserEnabled?: true
+  teaserDelaySec?: true
+  teaserText?: true
+  onboardingEnabled?: true
   scanCount?: true
   lastScannedAt?: true
   createdAt?: true
@@ -159,6 +220,18 @@ export type AgentMaxAggregateInputType = {
   ecommerceEnabled?: true
   logoUrl?: true
   primaryColor?: true
+  botName?: true
+  avatarEmoji?: true
+  avatarUrl?: true
+  welcomeMessage?: true
+  launcherStyle?: true
+  launcherPosition?: true
+  launcherOffsetX?: true
+  launcherOffsetY?: true
+  teaserEnabled?: true
+  teaserDelaySec?: true
+  teaserText?: true
+  onboardingEnabled?: true
   scanCount?: true
   lastScannedAt?: true
   createdAt?: true
@@ -184,6 +257,19 @@ export type AgentCountAggregateInputType = {
   ecommerceEnabled?: true
   logoUrl?: true
   primaryColor?: true
+  botName?: true
+  avatarEmoji?: true
+  avatarUrl?: true
+  welcomeMessage?: true
+  suggestionChips?: true
+  launcherStyle?: true
+  launcherPosition?: true
+  launcherOffsetX?: true
+  launcherOffsetY?: true
+  teaserEnabled?: true
+  teaserDelaySec?: true
+  teaserText?: true
+  onboardingEnabled?: true
   scanCount?: true
   lastScannedAt?: true
   createdAt?: true
@@ -296,6 +382,19 @@ export type AgentGroupByOutputType = {
   ecommerceEnabled: boolean
   logoUrl: string | null
   primaryColor: string | null
+  botName: string | null
+  avatarEmoji: string | null
+  avatarUrl: string | null
+  welcomeMessage: string | null
+  suggestionChips: runtime.JsonValue | null
+  launcherStyle: $Enums.LauncherStyle
+  launcherPosition: $Enums.LauncherPosition
+  launcherOffsetX: number
+  launcherOffsetY: number
+  teaserEnabled: boolean
+  teaserDelaySec: number
+  teaserText: string | null
+  onboardingEnabled: boolean
   scanCount: number
   lastScannedAt: Date | null
   createdAt: Date
@@ -344,6 +443,19 @@ export type AgentWhereInput = {
   ecommerceEnabled?: Prisma.BoolFilter<"Agent"> | boolean
   logoUrl?: Prisma.StringNullableFilter<"Agent"> | string | null
   primaryColor?: Prisma.StringNullableFilter<"Agent"> | string | null
+  botName?: Prisma.StringNullableFilter<"Agent"> | string | null
+  avatarEmoji?: Prisma.StringNullableFilter<"Agent"> | string | null
+  avatarUrl?: Prisma.StringNullableFilter<"Agent"> | string | null
+  welcomeMessage?: Prisma.StringNullableFilter<"Agent"> | string | null
+  suggestionChips?: Prisma.JsonNullableFilter<"Agent">
+  launcherStyle?: Prisma.EnumLauncherStyleFilter<"Agent"> | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFilter<"Agent"> | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFilter<"Agent"> | number
+  launcherOffsetY?: Prisma.IntFilter<"Agent"> | number
+  teaserEnabled?: Prisma.BoolFilter<"Agent"> | boolean
+  teaserDelaySec?: Prisma.IntFilter<"Agent"> | number
+  teaserText?: Prisma.StringNullableFilter<"Agent"> | string | null
+  onboardingEnabled?: Prisma.BoolFilter<"Agent"> | boolean
   scanCount?: Prisma.IntFilter<"Agent"> | number
   lastScannedAt?: Prisma.DateTimeNullableFilter<"Agent"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Agent"> | Date | string
@@ -370,6 +482,19 @@ export type AgentOrderByWithRelationInput = {
   ecommerceEnabled?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   primaryColor?: Prisma.SortOrderInput | Prisma.SortOrder
+  botName?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatarEmoji?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  welcomeMessage?: Prisma.SortOrderInput | Prisma.SortOrder
+  suggestionChips?: Prisma.SortOrderInput | Prisma.SortOrder
+  launcherStyle?: Prisma.SortOrder
+  launcherPosition?: Prisma.SortOrder
+  launcherOffsetX?: Prisma.SortOrder
+  launcherOffsetY?: Prisma.SortOrder
+  teaserEnabled?: Prisma.SortOrder
+  teaserDelaySec?: Prisma.SortOrder
+  teaserText?: Prisma.SortOrderInput | Prisma.SortOrder
+  onboardingEnabled?: Prisma.SortOrder
   scanCount?: Prisma.SortOrder
   lastScannedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -400,6 +525,19 @@ export type AgentWhereUniqueInput = Prisma.AtLeast<{
   ecommerceEnabled?: Prisma.BoolFilter<"Agent"> | boolean
   logoUrl?: Prisma.StringNullableFilter<"Agent"> | string | null
   primaryColor?: Prisma.StringNullableFilter<"Agent"> | string | null
+  botName?: Prisma.StringNullableFilter<"Agent"> | string | null
+  avatarEmoji?: Prisma.StringNullableFilter<"Agent"> | string | null
+  avatarUrl?: Prisma.StringNullableFilter<"Agent"> | string | null
+  welcomeMessage?: Prisma.StringNullableFilter<"Agent"> | string | null
+  suggestionChips?: Prisma.JsonNullableFilter<"Agent">
+  launcherStyle?: Prisma.EnumLauncherStyleFilter<"Agent"> | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFilter<"Agent"> | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFilter<"Agent"> | number
+  launcherOffsetY?: Prisma.IntFilter<"Agent"> | number
+  teaserEnabled?: Prisma.BoolFilter<"Agent"> | boolean
+  teaserDelaySec?: Prisma.IntFilter<"Agent"> | number
+  teaserText?: Prisma.StringNullableFilter<"Agent"> | string | null
+  onboardingEnabled?: Prisma.BoolFilter<"Agent"> | boolean
   scanCount?: Prisma.IntFilter<"Agent"> | number
   lastScannedAt?: Prisma.DateTimeNullableFilter<"Agent"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Agent"> | Date | string
@@ -426,6 +564,19 @@ export type AgentOrderByWithAggregationInput = {
   ecommerceEnabled?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   primaryColor?: Prisma.SortOrderInput | Prisma.SortOrder
+  botName?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatarEmoji?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  welcomeMessage?: Prisma.SortOrderInput | Prisma.SortOrder
+  suggestionChips?: Prisma.SortOrderInput | Prisma.SortOrder
+  launcherStyle?: Prisma.SortOrder
+  launcherPosition?: Prisma.SortOrder
+  launcherOffsetX?: Prisma.SortOrder
+  launcherOffsetY?: Prisma.SortOrder
+  teaserEnabled?: Prisma.SortOrder
+  teaserDelaySec?: Prisma.SortOrder
+  teaserText?: Prisma.SortOrderInput | Prisma.SortOrder
+  onboardingEnabled?: Prisma.SortOrder
   scanCount?: Prisma.SortOrder
   lastScannedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -459,6 +610,19 @@ export type AgentScalarWhereWithAggregatesInput = {
   ecommerceEnabled?: Prisma.BoolWithAggregatesFilter<"Agent"> | boolean
   logoUrl?: Prisma.StringNullableWithAggregatesFilter<"Agent"> | string | null
   primaryColor?: Prisma.StringNullableWithAggregatesFilter<"Agent"> | string | null
+  botName?: Prisma.StringNullableWithAggregatesFilter<"Agent"> | string | null
+  avatarEmoji?: Prisma.StringNullableWithAggregatesFilter<"Agent"> | string | null
+  avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"Agent"> | string | null
+  welcomeMessage?: Prisma.StringNullableWithAggregatesFilter<"Agent"> | string | null
+  suggestionChips?: Prisma.JsonNullableWithAggregatesFilter<"Agent">
+  launcherStyle?: Prisma.EnumLauncherStyleWithAggregatesFilter<"Agent"> | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionWithAggregatesFilter<"Agent"> | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntWithAggregatesFilter<"Agent"> | number
+  launcherOffsetY?: Prisma.IntWithAggregatesFilter<"Agent"> | number
+  teaserEnabled?: Prisma.BoolWithAggregatesFilter<"Agent"> | boolean
+  teaserDelaySec?: Prisma.IntWithAggregatesFilter<"Agent"> | number
+  teaserText?: Prisma.StringNullableWithAggregatesFilter<"Agent"> | string | null
+  onboardingEnabled?: Prisma.BoolWithAggregatesFilter<"Agent"> | boolean
   scanCount?: Prisma.IntWithAggregatesFilter<"Agent"> | number
   lastScannedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Agent"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Agent"> | Date | string
@@ -483,6 +647,19 @@ export type AgentCreateInput = {
   ecommerceEnabled?: boolean
   logoUrl?: string | null
   primaryColor?: string | null
+  botName?: string | null
+  avatarEmoji?: string | null
+  avatarUrl?: string | null
+  welcomeMessage?: string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: $Enums.LauncherStyle
+  launcherPosition?: $Enums.LauncherPosition
+  launcherOffsetX?: number
+  launcherOffsetY?: number
+  teaserEnabled?: boolean
+  teaserDelaySec?: number
+  teaserText?: string | null
+  onboardingEnabled?: boolean
   scanCount?: number
   lastScannedAt?: Date | string | null
   createdAt?: Date | string
@@ -509,6 +686,19 @@ export type AgentUncheckedCreateInput = {
   ecommerceEnabled?: boolean
   logoUrl?: string | null
   primaryColor?: string | null
+  botName?: string | null
+  avatarEmoji?: string | null
+  avatarUrl?: string | null
+  welcomeMessage?: string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: $Enums.LauncherStyle
+  launcherPosition?: $Enums.LauncherPosition
+  launcherOffsetX?: number
+  launcherOffsetY?: number
+  teaserEnabled?: boolean
+  teaserDelaySec?: number
+  teaserText?: string | null
+  onboardingEnabled?: boolean
   scanCount?: number
   lastScannedAt?: Date | string | null
   createdAt?: Date | string
@@ -533,6 +723,19 @@ export type AgentUpdateInput = {
   ecommerceEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  botName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarEmoji?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: Prisma.EnumLauncherStyleFieldUpdateOperationsInput | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFieldUpdateOperationsInput | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFieldUpdateOperationsInput | number
+  launcherOffsetY?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  teaserDelaySec?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   scanCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -559,6 +762,19 @@ export type AgentUncheckedUpdateInput = {
   ecommerceEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  botName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarEmoji?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: Prisma.EnumLauncherStyleFieldUpdateOperationsInput | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFieldUpdateOperationsInput | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFieldUpdateOperationsInput | number
+  launcherOffsetY?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  teaserDelaySec?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   scanCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -584,6 +800,19 @@ export type AgentCreateManyInput = {
   ecommerceEnabled?: boolean
   logoUrl?: string | null
   primaryColor?: string | null
+  botName?: string | null
+  avatarEmoji?: string | null
+  avatarUrl?: string | null
+  welcomeMessage?: string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: $Enums.LauncherStyle
+  launcherPosition?: $Enums.LauncherPosition
+  launcherOffsetX?: number
+  launcherOffsetY?: number
+  teaserEnabled?: boolean
+  teaserDelaySec?: number
+  teaserText?: string | null
+  onboardingEnabled?: boolean
   scanCount?: number
   lastScannedAt?: Date | string | null
   createdAt?: Date | string
@@ -608,6 +837,19 @@ export type AgentUpdateManyMutationInput = {
   ecommerceEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  botName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarEmoji?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: Prisma.EnumLauncherStyleFieldUpdateOperationsInput | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFieldUpdateOperationsInput | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFieldUpdateOperationsInput | number
+  launcherOffsetY?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  teaserDelaySec?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   scanCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -633,6 +875,19 @@ export type AgentUncheckedUpdateManyInput = {
   ecommerceEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  botName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarEmoji?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: Prisma.EnumLauncherStyleFieldUpdateOperationsInput | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFieldUpdateOperationsInput | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFieldUpdateOperationsInput | number
+  launcherOffsetY?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  teaserDelaySec?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   scanCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -681,6 +936,19 @@ export type AgentCountOrderByAggregateInput = {
   ecommerceEnabled?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
   primaryColor?: Prisma.SortOrder
+  botName?: Prisma.SortOrder
+  avatarEmoji?: Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrder
+  welcomeMessage?: Prisma.SortOrder
+  suggestionChips?: Prisma.SortOrder
+  launcherStyle?: Prisma.SortOrder
+  launcherPosition?: Prisma.SortOrder
+  launcherOffsetX?: Prisma.SortOrder
+  launcherOffsetY?: Prisma.SortOrder
+  teaserEnabled?: Prisma.SortOrder
+  teaserDelaySec?: Prisma.SortOrder
+  teaserText?: Prisma.SortOrder
+  onboardingEnabled?: Prisma.SortOrder
   scanCount?: Prisma.SortOrder
   lastScannedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -688,6 +956,9 @@ export type AgentCountOrderByAggregateInput = {
 }
 
 export type AgentAvgOrderByAggregateInput = {
+  launcherOffsetX?: Prisma.SortOrder
+  launcherOffsetY?: Prisma.SortOrder
+  teaserDelaySec?: Prisma.SortOrder
   scanCount?: Prisma.SortOrder
 }
 
@@ -709,6 +980,18 @@ export type AgentMaxOrderByAggregateInput = {
   ecommerceEnabled?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
   primaryColor?: Prisma.SortOrder
+  botName?: Prisma.SortOrder
+  avatarEmoji?: Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrder
+  welcomeMessage?: Prisma.SortOrder
+  launcherStyle?: Prisma.SortOrder
+  launcherPosition?: Prisma.SortOrder
+  launcherOffsetX?: Prisma.SortOrder
+  launcherOffsetY?: Prisma.SortOrder
+  teaserEnabled?: Prisma.SortOrder
+  teaserDelaySec?: Prisma.SortOrder
+  teaserText?: Prisma.SortOrder
+  onboardingEnabled?: Prisma.SortOrder
   scanCount?: Prisma.SortOrder
   lastScannedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -733,6 +1016,18 @@ export type AgentMinOrderByAggregateInput = {
   ecommerceEnabled?: Prisma.SortOrder
   logoUrl?: Prisma.SortOrder
   primaryColor?: Prisma.SortOrder
+  botName?: Prisma.SortOrder
+  avatarEmoji?: Prisma.SortOrder
+  avatarUrl?: Prisma.SortOrder
+  welcomeMessage?: Prisma.SortOrder
+  launcherStyle?: Prisma.SortOrder
+  launcherPosition?: Prisma.SortOrder
+  launcherOffsetX?: Prisma.SortOrder
+  launcherOffsetY?: Prisma.SortOrder
+  teaserEnabled?: Prisma.SortOrder
+  teaserDelaySec?: Prisma.SortOrder
+  teaserText?: Prisma.SortOrder
+  onboardingEnabled?: Prisma.SortOrder
   scanCount?: Prisma.SortOrder
   lastScannedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -740,6 +1035,9 @@ export type AgentMinOrderByAggregateInput = {
 }
 
 export type AgentSumOrderByAggregateInput = {
+  launcherOffsetX?: Prisma.SortOrder
+  launcherOffsetY?: Prisma.SortOrder
+  teaserDelaySec?: Prisma.SortOrder
   scanCount?: Prisma.SortOrder
 }
 
@@ -798,6 +1096,14 @@ export type AgentUpdateallowedDomainsInput = {
   push?: string | string[]
 }
 
+export type EnumLauncherStyleFieldUpdateOperationsInput = {
+  set?: $Enums.LauncherStyle
+}
+
+export type EnumLauncherPositionFieldUpdateOperationsInput = {
+  set?: $Enums.LauncherPosition
+}
+
 export type AgentCreateWithoutOrganizationInput = {
   id?: string
   name: string
@@ -816,6 +1122,19 @@ export type AgentCreateWithoutOrganizationInput = {
   ecommerceEnabled?: boolean
   logoUrl?: string | null
   primaryColor?: string | null
+  botName?: string | null
+  avatarEmoji?: string | null
+  avatarUrl?: string | null
+  welcomeMessage?: string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: $Enums.LauncherStyle
+  launcherPosition?: $Enums.LauncherPosition
+  launcherOffsetX?: number
+  launcherOffsetY?: number
+  teaserEnabled?: boolean
+  teaserDelaySec?: number
+  teaserText?: string | null
+  onboardingEnabled?: boolean
   scanCount?: number
   lastScannedAt?: Date | string | null
   createdAt?: Date | string
@@ -840,6 +1159,19 @@ export type AgentUncheckedCreateWithoutOrganizationInput = {
   ecommerceEnabled?: boolean
   logoUrl?: string | null
   primaryColor?: string | null
+  botName?: string | null
+  avatarEmoji?: string | null
+  avatarUrl?: string | null
+  welcomeMessage?: string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: $Enums.LauncherStyle
+  launcherPosition?: $Enums.LauncherPosition
+  launcherOffsetX?: number
+  launcherOffsetY?: number
+  teaserEnabled?: boolean
+  teaserDelaySec?: number
+  teaserText?: string | null
+  onboardingEnabled?: boolean
   scanCount?: number
   lastScannedAt?: Date | string | null
   createdAt?: Date | string
@@ -894,6 +1226,19 @@ export type AgentScalarWhereInput = {
   ecommerceEnabled?: Prisma.BoolFilter<"Agent"> | boolean
   logoUrl?: Prisma.StringNullableFilter<"Agent"> | string | null
   primaryColor?: Prisma.StringNullableFilter<"Agent"> | string | null
+  botName?: Prisma.StringNullableFilter<"Agent"> | string | null
+  avatarEmoji?: Prisma.StringNullableFilter<"Agent"> | string | null
+  avatarUrl?: Prisma.StringNullableFilter<"Agent"> | string | null
+  welcomeMessage?: Prisma.StringNullableFilter<"Agent"> | string | null
+  suggestionChips?: Prisma.JsonNullableFilter<"Agent">
+  launcherStyle?: Prisma.EnumLauncherStyleFilter<"Agent"> | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFilter<"Agent"> | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFilter<"Agent"> | number
+  launcherOffsetY?: Prisma.IntFilter<"Agent"> | number
+  teaserEnabled?: Prisma.BoolFilter<"Agent"> | boolean
+  teaserDelaySec?: Prisma.IntFilter<"Agent"> | number
+  teaserText?: Prisma.StringNullableFilter<"Agent"> | string | null
+  onboardingEnabled?: Prisma.BoolFilter<"Agent"> | boolean
   scanCount?: Prisma.IntFilter<"Agent"> | number
   lastScannedAt?: Prisma.DateTimeNullableFilter<"Agent"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Agent"> | Date | string
@@ -918,6 +1263,19 @@ export type AgentCreateManyOrganizationInput = {
   ecommerceEnabled?: boolean
   logoUrl?: string | null
   primaryColor?: string | null
+  botName?: string | null
+  avatarEmoji?: string | null
+  avatarUrl?: string | null
+  welcomeMessage?: string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: $Enums.LauncherStyle
+  launcherPosition?: $Enums.LauncherPosition
+  launcherOffsetX?: number
+  launcherOffsetY?: number
+  teaserEnabled?: boolean
+  teaserDelaySec?: number
+  teaserText?: string | null
+  onboardingEnabled?: boolean
   scanCount?: number
   lastScannedAt?: Date | string | null
   createdAt?: Date | string
@@ -942,6 +1300,19 @@ export type AgentUpdateWithoutOrganizationInput = {
   ecommerceEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  botName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarEmoji?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: Prisma.EnumLauncherStyleFieldUpdateOperationsInput | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFieldUpdateOperationsInput | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFieldUpdateOperationsInput | number
+  launcherOffsetY?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  teaserDelaySec?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   scanCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -966,6 +1337,19 @@ export type AgentUncheckedUpdateWithoutOrganizationInput = {
   ecommerceEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  botName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarEmoji?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: Prisma.EnumLauncherStyleFieldUpdateOperationsInput | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFieldUpdateOperationsInput | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFieldUpdateOperationsInput | number
+  launcherOffsetY?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  teaserDelaySec?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   scanCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -990,6 +1374,19 @@ export type AgentUncheckedUpdateManyWithoutOrganizationInput = {
   ecommerceEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  botName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarEmoji?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  welcomeMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  suggestionChips?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  launcherStyle?: Prisma.EnumLauncherStyleFieldUpdateOperationsInput | $Enums.LauncherStyle
+  launcherPosition?: Prisma.EnumLauncherPositionFieldUpdateOperationsInput | $Enums.LauncherPosition
+  launcherOffsetX?: Prisma.IntFieldUpdateOperationsInput | number
+  launcherOffsetY?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  teaserDelaySec?: Prisma.IntFieldUpdateOperationsInput | number
+  teaserText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  onboardingEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   scanCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1017,6 +1414,19 @@ export type AgentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   ecommerceEnabled?: boolean
   logoUrl?: boolean
   primaryColor?: boolean
+  botName?: boolean
+  avatarEmoji?: boolean
+  avatarUrl?: boolean
+  welcomeMessage?: boolean
+  suggestionChips?: boolean
+  launcherStyle?: boolean
+  launcherPosition?: boolean
+  launcherOffsetX?: boolean
+  launcherOffsetY?: boolean
+  teaserEnabled?: boolean
+  teaserDelaySec?: boolean
+  teaserText?: boolean
+  onboardingEnabled?: boolean
   scanCount?: boolean
   lastScannedAt?: boolean
   createdAt?: boolean
@@ -1043,6 +1453,19 @@ export type AgentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   ecommerceEnabled?: boolean
   logoUrl?: boolean
   primaryColor?: boolean
+  botName?: boolean
+  avatarEmoji?: boolean
+  avatarUrl?: boolean
+  welcomeMessage?: boolean
+  suggestionChips?: boolean
+  launcherStyle?: boolean
+  launcherPosition?: boolean
+  launcherOffsetX?: boolean
+  launcherOffsetY?: boolean
+  teaserEnabled?: boolean
+  teaserDelaySec?: boolean
+  teaserText?: boolean
+  onboardingEnabled?: boolean
   scanCount?: boolean
   lastScannedAt?: boolean
   createdAt?: boolean
@@ -1069,6 +1492,19 @@ export type AgentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   ecommerceEnabled?: boolean
   logoUrl?: boolean
   primaryColor?: boolean
+  botName?: boolean
+  avatarEmoji?: boolean
+  avatarUrl?: boolean
+  welcomeMessage?: boolean
+  suggestionChips?: boolean
+  launcherStyle?: boolean
+  launcherPosition?: boolean
+  launcherOffsetX?: boolean
+  launcherOffsetY?: boolean
+  teaserEnabled?: boolean
+  teaserDelaySec?: boolean
+  teaserText?: boolean
+  onboardingEnabled?: boolean
   scanCount?: boolean
   lastScannedAt?: boolean
   createdAt?: boolean
@@ -1095,13 +1531,26 @@ export type AgentSelectScalar = {
   ecommerceEnabled?: boolean
   logoUrl?: boolean
   primaryColor?: boolean
+  botName?: boolean
+  avatarEmoji?: boolean
+  avatarUrl?: boolean
+  welcomeMessage?: boolean
+  suggestionChips?: boolean
+  launcherStyle?: boolean
+  launcherPosition?: boolean
+  launcherOffsetX?: boolean
+  launcherOffsetY?: boolean
+  teaserEnabled?: boolean
+  teaserDelaySec?: boolean
+  teaserText?: boolean
+  onboardingEnabled?: boolean
   scanCount?: boolean
   lastScannedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AgentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId" | "name" | "description" | "systemPrompt" | "language" | "publicCode" | "kind" | "providerType" | "storeUrl" | "storeName" | "storeCurrency" | "storePolicy" | "encryptedCreds" | "allowedDomains" | "ecommerceEnabled" | "logoUrl" | "primaryColor" | "scanCount" | "lastScannedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["agent"]>
+export type AgentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId" | "name" | "description" | "systemPrompt" | "language" | "publicCode" | "kind" | "providerType" | "storeUrl" | "storeName" | "storeCurrency" | "storePolicy" | "encryptedCreds" | "allowedDomains" | "ecommerceEnabled" | "logoUrl" | "primaryColor" | "botName" | "avatarEmoji" | "avatarUrl" | "welcomeMessage" | "suggestionChips" | "launcherStyle" | "launcherPosition" | "launcherOffsetX" | "launcherOffsetY" | "teaserEnabled" | "teaserDelaySec" | "teaserText" | "onboardingEnabled" | "scanCount" | "lastScannedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["agent"]>
 export type AgentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
 }
@@ -1136,6 +1585,19 @@ export type $AgentPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     ecommerceEnabled: boolean
     logoUrl: string | null
     primaryColor: string | null
+    botName: string | null
+    avatarEmoji: string | null
+    avatarUrl: string | null
+    welcomeMessage: string | null
+    suggestionChips: runtime.JsonValue | null
+    launcherStyle: $Enums.LauncherStyle
+    launcherPosition: $Enums.LauncherPosition
+    launcherOffsetX: number
+    launcherOffsetY: number
+    teaserEnabled: boolean
+    teaserDelaySec: number
+    teaserText: string | null
+    onboardingEnabled: boolean
     scanCount: number
     lastScannedAt: Date | null
     createdAt: Date
@@ -1582,6 +2044,19 @@ export interface AgentFieldRefs {
   readonly ecommerceEnabled: Prisma.FieldRef<"Agent", 'Boolean'>
   readonly logoUrl: Prisma.FieldRef<"Agent", 'String'>
   readonly primaryColor: Prisma.FieldRef<"Agent", 'String'>
+  readonly botName: Prisma.FieldRef<"Agent", 'String'>
+  readonly avatarEmoji: Prisma.FieldRef<"Agent", 'String'>
+  readonly avatarUrl: Prisma.FieldRef<"Agent", 'String'>
+  readonly welcomeMessage: Prisma.FieldRef<"Agent", 'String'>
+  readonly suggestionChips: Prisma.FieldRef<"Agent", 'Json'>
+  readonly launcherStyle: Prisma.FieldRef<"Agent", 'LauncherStyle'>
+  readonly launcherPosition: Prisma.FieldRef<"Agent", 'LauncherPosition'>
+  readonly launcherOffsetX: Prisma.FieldRef<"Agent", 'Int'>
+  readonly launcherOffsetY: Prisma.FieldRef<"Agent", 'Int'>
+  readonly teaserEnabled: Prisma.FieldRef<"Agent", 'Boolean'>
+  readonly teaserDelaySec: Prisma.FieldRef<"Agent", 'Int'>
+  readonly teaserText: Prisma.FieldRef<"Agent", 'String'>
+  readonly onboardingEnabled: Prisma.FieldRef<"Agent", 'Boolean'>
   readonly scanCount: Prisma.FieldRef<"Agent", 'Int'>
   readonly lastScannedAt: Prisma.FieldRef<"Agent", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Agent", 'DateTime'>

@@ -33,3 +33,21 @@ export const AgentKind = {
 } as const
 
 export type AgentKind = (typeof AgentKind)[keyof typeof AgentKind]
+
+
+export const LauncherStyle = {
+  BUBBLE: 'BUBBLE',
+  PILL: 'PILL',
+  BADGE_AVATAR: 'BADGE_AVATAR'
+} as const
+
+export type LauncherStyle = (typeof LauncherStyle)[keyof typeof LauncherStyle]
+
+
+export const LauncherPosition = {
+  BOTTOM_RIGHT: 'BOTTOM_RIGHT',
+  BOTTOM_LEFT: 'BOTTOM_LEFT',
+  BOTTOM_CENTER: 'BOTTOM_CENTER'
+} as const
+
+export type LauncherPosition = (typeof LauncherPosition)[keyof typeof LauncherPosition]

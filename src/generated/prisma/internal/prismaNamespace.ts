@@ -2424,6 +2424,19 @@ export const AgentScalarFieldEnum = {
   ecommerceEnabled: 'ecommerceEnabled',
   logoUrl: 'logoUrl',
   primaryColor: 'primaryColor',
+  botName: 'botName',
+  avatarEmoji: 'avatarEmoji',
+  avatarUrl: 'avatarUrl',
+  welcomeMessage: 'welcomeMessage',
+  suggestionChips: 'suggestionChips',
+  launcherStyle: 'launcherStyle',
+  launcherPosition: 'launcherPosition',
+  launcherOffsetX: 'launcherOffsetX',
+  launcherOffsetY: 'launcherOffsetY',
+  teaserEnabled: 'teaserEnabled',
+  teaserDelaySec: 'teaserDelaySec',
+  teaserText: 'teaserText',
+  onboardingEnabled: 'onboardingEnabled',
   scanCount: 'scanCount',
   lastScannedAt: 'lastScannedAt',
   createdAt: 'createdAt',
@@ -2805,6 +2818,34 @@ export type EnumAgentKindFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
  * Reference to a field of type 'AgentKind[]'
  */
 export type ListEnumAgentKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AgentKind[]'>
+    
+
+
+/**
+ * Reference to a field of type 'LauncherStyle'
+ */
+export type EnumLauncherStyleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LauncherStyle'>
+    
+
+
+/**
+ * Reference to a field of type 'LauncherStyle[]'
+ */
+export type ListEnumLauncherStyleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LauncherStyle[]'>
+    
+
+
+/**
+ * Reference to a field of type 'LauncherPosition'
+ */
+export type EnumLauncherPositionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LauncherPosition'>
+    
+
+
+/**
+ * Reference to a field of type 'LauncherPosition[]'
+ */
+export type ListEnumLauncherPositionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LauncherPosition[]'>
     
 
 
