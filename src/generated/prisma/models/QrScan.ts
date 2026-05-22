@@ -207,7 +207,7 @@ export type QrScanGroupByOutputType = {
   _max: QrScanMaxAggregateOutputType | null
 }
 
-export type GetQrScanGroupByPayload<T extends QrScanGroupByArgs> = Prisma.PrismaPromise<
+type GetQrScanGroupByPayload<T extends QrScanGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<QrScanGroupByOutputType, T['by']> &
       {
@@ -1367,11 +1367,6 @@ export type QrScanFindManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Skip the first `n` QrScans.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of QrScans.
-   */
   distinct?: Prisma.QrScanScalarFieldEnum | Prisma.QrScanScalarFieldEnum[]
 }
 

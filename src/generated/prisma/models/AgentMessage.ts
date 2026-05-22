@@ -97,6 +97,7 @@ export type AgentMessageCountAggregateOutputType = {
   completionTokens: number
   totalTokens: number
   latencyMs: number
+  actions: number
   createdAt: number
   _all: number
 }
@@ -173,6 +174,7 @@ export type AgentMessageCountAggregateInputType = {
   completionTokens?: true
   totalTokens?: true
   latencyMs?: true
+  actions?: true
   createdAt?: true
   _all?: true
 }
@@ -278,6 +280,7 @@ export type AgentMessageGroupByOutputType = {
   completionTokens: number | null
   totalTokens: number | null
   latencyMs: number | null
+  actions: runtime.JsonValue | null
   createdAt: Date
   _count: AgentMessageCountAggregateOutputType | null
   _avg: AgentMessageAvgAggregateOutputType | null
@@ -286,7 +289,7 @@ export type AgentMessageGroupByOutputType = {
   _max: AgentMessageMaxAggregateOutputType | null
 }
 
-export type GetAgentMessageGroupByPayload<T extends AgentMessageGroupByArgs> = Prisma.PrismaPromise<
+type GetAgentMessageGroupByPayload<T extends AgentMessageGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<AgentMessageGroupByOutputType, T['by']> &
       {
@@ -319,6 +322,7 @@ export type AgentMessageWhereInput = {
   completionTokens?: Prisma.IntNullableFilter<"AgentMessage"> | number | null
   totalTokens?: Prisma.IntNullableFilter<"AgentMessage"> | number | null
   latencyMs?: Prisma.IntNullableFilter<"AgentMessage"> | number | null
+  actions?: Prisma.JsonNullableFilter<"AgentMessage">
   createdAt?: Prisma.DateTimeFilter<"AgentMessage"> | Date | string
   conversation?: Prisma.XOR<Prisma.AgentConversationScalarRelationFilter, Prisma.AgentConversationWhereInput>
 }
@@ -338,6 +342,7 @@ export type AgentMessageOrderByWithRelationInput = {
   completionTokens?: Prisma.SortOrderInput | Prisma.SortOrder
   totalTokens?: Prisma.SortOrderInput | Prisma.SortOrder
   latencyMs?: Prisma.SortOrderInput | Prisma.SortOrder
+  actions?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   conversation?: Prisma.AgentConversationOrderByWithRelationInput
 }
@@ -361,6 +366,7 @@ export type AgentMessageWhereUniqueInput = Prisma.AtLeast<{
   completionTokens?: Prisma.IntNullableFilter<"AgentMessage"> | number | null
   totalTokens?: Prisma.IntNullableFilter<"AgentMessage"> | number | null
   latencyMs?: Prisma.IntNullableFilter<"AgentMessage"> | number | null
+  actions?: Prisma.JsonNullableFilter<"AgentMessage">
   createdAt?: Prisma.DateTimeFilter<"AgentMessage"> | Date | string
   conversation?: Prisma.XOR<Prisma.AgentConversationScalarRelationFilter, Prisma.AgentConversationWhereInput>
 }, "id" | "conversationId_seq">
@@ -380,6 +386,7 @@ export type AgentMessageOrderByWithAggregationInput = {
   completionTokens?: Prisma.SortOrderInput | Prisma.SortOrder
   totalTokens?: Prisma.SortOrderInput | Prisma.SortOrder
   latencyMs?: Prisma.SortOrderInput | Prisma.SortOrder
+  actions?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.AgentMessageCountOrderByAggregateInput
   _avg?: Prisma.AgentMessageAvgOrderByAggregateInput
@@ -406,6 +413,7 @@ export type AgentMessageScalarWhereWithAggregatesInput = {
   completionTokens?: Prisma.IntNullableWithAggregatesFilter<"AgentMessage"> | number | null
   totalTokens?: Prisma.IntNullableWithAggregatesFilter<"AgentMessage"> | number | null
   latencyMs?: Prisma.IntNullableWithAggregatesFilter<"AgentMessage"> | number | null
+  actions?: Prisma.JsonNullableWithAggregatesFilter<"AgentMessage">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AgentMessage"> | Date | string
 }
 
@@ -423,6 +431,7 @@ export type AgentMessageCreateInput = {
   completionTokens?: number | null
   totalTokens?: number | null
   latencyMs?: number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   conversation: Prisma.AgentConversationCreateNestedOneWithoutMessagesInput
 }
@@ -442,6 +451,7 @@ export type AgentMessageUncheckedCreateInput = {
   completionTokens?: number | null
   totalTokens?: number | null
   latencyMs?: number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
 }
 
@@ -459,6 +469,7 @@ export type AgentMessageUpdateInput = {
   completionTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   totalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   latencyMs?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   conversation?: Prisma.AgentConversationUpdateOneRequiredWithoutMessagesNestedInput
 }
@@ -478,6 +489,7 @@ export type AgentMessageUncheckedUpdateInput = {
   completionTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   totalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   latencyMs?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -496,6 +508,7 @@ export type AgentMessageCreateManyInput = {
   completionTokens?: number | null
   totalTokens?: number | null
   latencyMs?: number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
 }
 
@@ -513,6 +526,7 @@ export type AgentMessageUpdateManyMutationInput = {
   completionTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   totalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   latencyMs?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -531,6 +545,7 @@ export type AgentMessageUncheckedUpdateManyInput = {
   completionTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   totalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   latencyMs?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -564,6 +579,7 @@ export type AgentMessageCountOrderByAggregateInput = {
   completionTokens?: Prisma.SortOrder
   totalTokens?: Prisma.SortOrder
   latencyMs?: Prisma.SortOrder
+  actions?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -679,6 +695,7 @@ export type AgentMessageCreateWithoutConversationInput = {
   completionTokens?: number | null
   totalTokens?: number | null
   latencyMs?: number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
 }
 
@@ -696,6 +713,7 @@ export type AgentMessageUncheckedCreateWithoutConversationInput = {
   completionTokens?: number | null
   totalTokens?: number | null
   latencyMs?: number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
 }
 
@@ -743,6 +761,7 @@ export type AgentMessageScalarWhereInput = {
   completionTokens?: Prisma.IntNullableFilter<"AgentMessage"> | number | null
   totalTokens?: Prisma.IntNullableFilter<"AgentMessage"> | number | null
   latencyMs?: Prisma.IntNullableFilter<"AgentMessage"> | number | null
+  actions?: Prisma.JsonNullableFilter<"AgentMessage">
   createdAt?: Prisma.DateTimeFilter<"AgentMessage"> | Date | string
 }
 
@@ -760,6 +779,7 @@ export type AgentMessageCreateManyConversationInput = {
   completionTokens?: number | null
   totalTokens?: number | null
   latencyMs?: number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
 }
 
@@ -777,6 +797,7 @@ export type AgentMessageUpdateWithoutConversationInput = {
   completionTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   totalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   latencyMs?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -794,6 +815,7 @@ export type AgentMessageUncheckedUpdateWithoutConversationInput = {
   completionTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   totalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   latencyMs?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -811,6 +833,7 @@ export type AgentMessageUncheckedUpdateManyWithoutConversationInput = {
   completionTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   totalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   latencyMs?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  actions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -831,6 +854,7 @@ export type AgentMessageSelect<ExtArgs extends runtime.Types.Extensions.Internal
   completionTokens?: boolean
   totalTokens?: boolean
   latencyMs?: boolean
+  actions?: boolean
   createdAt?: boolean
   conversation?: boolean | Prisma.AgentConversationDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["agentMessage"]>
@@ -850,6 +874,7 @@ export type AgentMessageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   completionTokens?: boolean
   totalTokens?: boolean
   latencyMs?: boolean
+  actions?: boolean
   createdAt?: boolean
   conversation?: boolean | Prisma.AgentConversationDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["agentMessage"]>
@@ -869,6 +894,7 @@ export type AgentMessageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   completionTokens?: boolean
   totalTokens?: boolean
   latencyMs?: boolean
+  actions?: boolean
   createdAt?: boolean
   conversation?: boolean | Prisma.AgentConversationDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["agentMessage"]>
@@ -888,10 +914,11 @@ export type AgentMessageSelectScalar = {
   completionTokens?: boolean
   totalTokens?: boolean
   latencyMs?: boolean
+  actions?: boolean
   createdAt?: boolean
 }
 
-export type AgentMessageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "conversationId" | "seq" | "role" | "content" | "toolCallId" | "toolName" | "model" | "temperature" | "maxTokens" | "promptTokens" | "completionTokens" | "totalTokens" | "latencyMs" | "createdAt", ExtArgs["result"]["agentMessage"]>
+export type AgentMessageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "conversationId" | "seq" | "role" | "content" | "toolCallId" | "toolName" | "model" | "temperature" | "maxTokens" | "promptTokens" | "completionTokens" | "totalTokens" | "latencyMs" | "actions" | "createdAt", ExtArgs["result"]["agentMessage"]>
 export type AgentMessageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   conversation?: boolean | Prisma.AgentConversationDefaultArgs<ExtArgs>
 }
@@ -922,6 +949,7 @@ export type $AgentMessagePayload<ExtArgs extends runtime.Types.Extensions.Intern
     completionTokens: number | null
     totalTokens: number | null
     latencyMs: number | null
+    actions: runtime.JsonValue | null
     createdAt: Date
   }, ExtArgs["result"]["agentMessage"]>
   composites: {}
@@ -1361,6 +1389,7 @@ export interface AgentMessageFieldRefs {
   readonly completionTokens: Prisma.FieldRef<"AgentMessage", 'Int'>
   readonly totalTokens: Prisma.FieldRef<"AgentMessage", 'Int'>
   readonly latencyMs: Prisma.FieldRef<"AgentMessage", 'Int'>
+  readonly actions: Prisma.FieldRef<"AgentMessage", 'Json'>
   readonly createdAt: Prisma.FieldRef<"AgentMessage", 'DateTime'>
 }
     
@@ -1558,11 +1587,6 @@ export type AgentMessageFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` AgentMessages.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of AgentMessages.
-   */
   distinct?: Prisma.AgentMessageScalarFieldEnum | Prisma.AgentMessageScalarFieldEnum[]
 }
 

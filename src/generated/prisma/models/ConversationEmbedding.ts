@@ -144,7 +144,7 @@ export type ConversationEmbeddingGroupByOutputType = {
   _max: ConversationEmbeddingMaxAggregateOutputType | null
 }
 
-export type GetConversationEmbeddingGroupByPayload<T extends ConversationEmbeddingGroupByArgs> = Prisma.PrismaPromise<
+type GetConversationEmbeddingGroupByPayload<T extends ConversationEmbeddingGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ConversationEmbeddingGroupByOutputType, T['by']> &
       {
@@ -879,11 +879,6 @@ export type ConversationEmbeddingFindManyArgs<ExtArgs extends runtime.Types.Exte
    * Skip the first `n` ConversationEmbeddings.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of ConversationEmbeddings.
-   */
   distinct?: Prisma.ConversationEmbeddingScalarFieldEnum | Prisma.ConversationEmbeddingScalarFieldEnum[]
 }
 

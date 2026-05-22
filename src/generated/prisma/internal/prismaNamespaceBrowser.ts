@@ -227,6 +227,7 @@ export const QrCodeScalarFieldEnum = {
   lastScannedAt: 'lastScannedAt',
   status: 'status',
   chatbotId: 'chatbotId',
+  agentId: 'agentId',
   designConfig: 'designConfig',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -289,10 +290,8 @@ export const AgentScalarFieldEnum = {
   encryptedCreds: 'encryptedCreds',
   allowedDomains: 'allowedDomains',
   ecommerceEnabled: 'ecommerceEnabled',
-  logoUrl: 'logoUrl',
   primaryColor: 'primaryColor',
   botName: 'botName',
-  avatarEmoji: 'avatarEmoji',
   avatarUrl: 'avatarUrl',
   welcomeMessage: 'welcomeMessage',
   suggestionChips: 'suggestionChips',
@@ -523,6 +522,7 @@ export const AgentMessageScalarFieldEnum = {
   completionTokens: 'completionTokens',
   totalTokens: 'totalTokens',
   latencyMs: 'latencyMs',
+  actions: 'actions',
   createdAt: 'createdAt'
 } as const
 

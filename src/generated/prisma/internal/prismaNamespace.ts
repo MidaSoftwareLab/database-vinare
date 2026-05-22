@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.7.0
- * Query Engine version: 75cbdc1eb7150937890ad5465d861175c6624711
+ * Prisma Client JS version: 7.4.2
+ * Query Engine version: 94a226be1cf2967af2541cca5529f0f7ba866919
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.7.0",
-  engine: "75cbdc1eb7150937890ad5465d861175c6624711"
+  client: "7.4.2",
+  engine: "94a226be1cf2967af2541cca5529f0f7ba866919"
 }
 
 /**
@@ -2360,6 +2360,7 @@ export const QrCodeScalarFieldEnum = {
   lastScannedAt: 'lastScannedAt',
   status: 'status',
   chatbotId: 'chatbotId',
+  agentId: 'agentId',
   designConfig: 'designConfig',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -2422,10 +2423,8 @@ export const AgentScalarFieldEnum = {
   encryptedCreds: 'encryptedCreds',
   allowedDomains: 'allowedDomains',
   ecommerceEnabled: 'ecommerceEnabled',
-  logoUrl: 'logoUrl',
   primaryColor: 'primaryColor',
   botName: 'botName',
-  avatarEmoji: 'avatarEmoji',
   avatarUrl: 'avatarUrl',
   welcomeMessage: 'welcomeMessage',
   suggestionChips: 'suggestionChips',
@@ -2656,6 +2655,7 @@ export const AgentMessageScalarFieldEnum = {
   completionTokens: 'completionTokens',
   totalTokens: 'totalTokens',
   latencyMs: 'latencyMs',
+  actions: 'actions',
   createdAt: 'createdAt'
 } as const
 

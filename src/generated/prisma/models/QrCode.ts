@@ -44,6 +44,7 @@ export type QrCodeMinAggregateOutputType = {
   lastScannedAt: Date | null
   status: $Enums.QrCodeStatus | null
   chatbotId: string | null
+  agentId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -58,6 +59,7 @@ export type QrCodeMaxAggregateOutputType = {
   lastScannedAt: Date | null
   status: $Enums.QrCodeStatus | null
   chatbotId: string | null
+  agentId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -72,6 +74,7 @@ export type QrCodeCountAggregateOutputType = {
   lastScannedAt: number
   status: number
   chatbotId: number
+  agentId: number
   designConfig: number
   createdAt: number
   updatedAt: number
@@ -97,6 +100,7 @@ export type QrCodeMinAggregateInputType = {
   lastScannedAt?: true
   status?: true
   chatbotId?: true
+  agentId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -111,6 +115,7 @@ export type QrCodeMaxAggregateInputType = {
   lastScannedAt?: true
   status?: true
   chatbotId?: true
+  agentId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -125,6 +130,7 @@ export type QrCodeCountAggregateInputType = {
   lastScannedAt?: true
   status?: true
   chatbotId?: true
+  agentId?: true
   designConfig?: true
   createdAt?: true
   updatedAt?: true
@@ -227,6 +233,7 @@ export type QrCodeGroupByOutputType = {
   lastScannedAt: Date | null
   status: $Enums.QrCodeStatus
   chatbotId: string | null
+  agentId: string | null
   designConfig: runtime.JsonValue | null
   createdAt: Date
   updatedAt: Date
@@ -237,7 +244,7 @@ export type QrCodeGroupByOutputType = {
   _max: QrCodeMaxAggregateOutputType | null
 }
 
-export type GetQrCodeGroupByPayload<T extends QrCodeGroupByArgs> = Prisma.PrismaPromise<
+type GetQrCodeGroupByPayload<T extends QrCodeGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<QrCodeGroupByOutputType, T['by']> &
       {
@@ -265,11 +272,13 @@ export type QrCodeWhereInput = {
   lastScannedAt?: Prisma.DateTimeNullableFilter<"QrCode"> | Date | string | null
   status?: Prisma.EnumQrCodeStatusFilter<"QrCode"> | $Enums.QrCodeStatus
   chatbotId?: Prisma.StringNullableFilter<"QrCode"> | string | null
+  agentId?: Prisma.StringNullableFilter<"QrCode"> | string | null
   designConfig?: Prisma.JsonNullableFilter<"QrCode">
   createdAt?: Prisma.DateTimeFilter<"QrCode"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"QrCode"> | Date | string
   organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
   chatbot?: Prisma.XOR<Prisma.ChatbotNullableScalarRelationFilter, Prisma.ChatbotWhereInput> | null
+  agent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
   scans?: Prisma.QrScanListRelationFilter
 }
 
@@ -283,11 +292,13 @@ export type QrCodeOrderByWithRelationInput = {
   lastScannedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   chatbotId?: Prisma.SortOrderInput | Prisma.SortOrder
+  agentId?: Prisma.SortOrderInput | Prisma.SortOrder
   designConfig?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   organization?: Prisma.OrganizationOrderByWithRelationInput
   chatbot?: Prisma.ChatbotOrderByWithRelationInput
+  agent?: Prisma.AgentOrderByWithRelationInput
   scans?: Prisma.QrScanOrderByRelationAggregateInput
 }
 
@@ -304,11 +315,13 @@ export type QrCodeWhereUniqueInput = Prisma.AtLeast<{
   lastScannedAt?: Prisma.DateTimeNullableFilter<"QrCode"> | Date | string | null
   status?: Prisma.EnumQrCodeStatusFilter<"QrCode"> | $Enums.QrCodeStatus
   chatbotId?: Prisma.StringNullableFilter<"QrCode"> | string | null
+  agentId?: Prisma.StringNullableFilter<"QrCode"> | string | null
   designConfig?: Prisma.JsonNullableFilter<"QrCode">
   createdAt?: Prisma.DateTimeFilter<"QrCode"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"QrCode"> | Date | string
   organization?: Prisma.XOR<Prisma.OrganizationScalarRelationFilter, Prisma.OrganizationWhereInput>
   chatbot?: Prisma.XOR<Prisma.ChatbotNullableScalarRelationFilter, Prisma.ChatbotWhereInput> | null
+  agent?: Prisma.XOR<Prisma.AgentNullableScalarRelationFilter, Prisma.AgentWhereInput> | null
   scans?: Prisma.QrScanListRelationFilter
 }, "id" | "publicCode">
 
@@ -322,6 +335,7 @@ export type QrCodeOrderByWithAggregationInput = {
   lastScannedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   chatbotId?: Prisma.SortOrderInput | Prisma.SortOrder
+  agentId?: Prisma.SortOrderInput | Prisma.SortOrder
   designConfig?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -345,6 +359,7 @@ export type QrCodeScalarWhereWithAggregatesInput = {
   lastScannedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"QrCode"> | Date | string | null
   status?: Prisma.EnumQrCodeStatusWithAggregatesFilter<"QrCode"> | $Enums.QrCodeStatus
   chatbotId?: Prisma.StringNullableWithAggregatesFilter<"QrCode"> | string | null
+  agentId?: Prisma.StringNullableWithAggregatesFilter<"QrCode"> | string | null
   designConfig?: Prisma.JsonNullableWithAggregatesFilter<"QrCode">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"QrCode"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"QrCode"> | Date | string
@@ -363,6 +378,7 @@ export type QrCodeCreateInput = {
   updatedAt?: Date | string
   organization: Prisma.OrganizationCreateNestedOneWithoutQrCodesInput
   chatbot?: Prisma.ChatbotCreateNestedOneWithoutQrCodesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutQrCodesInput
   scans?: Prisma.QrScanCreateNestedManyWithoutQrCodeInput
 }
 
@@ -376,6 +392,7 @@ export type QrCodeUncheckedCreateInput = {
   lastScannedAt?: Date | string | null
   status?: $Enums.QrCodeStatus
   chatbotId?: string | null
+  agentId?: string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -395,6 +412,7 @@ export type QrCodeUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutQrCodesNestedInput
   chatbot?: Prisma.ChatbotUpdateOneWithoutQrCodesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutQrCodesNestedInput
   scans?: Prisma.QrScanUpdateManyWithoutQrCodeNestedInput
 }
 
@@ -408,6 +426,7 @@ export type QrCodeUncheckedUpdateInput = {
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
   chatbotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -424,6 +443,7 @@ export type QrCodeCreateManyInput = {
   lastScannedAt?: Date | string | null
   status?: $Enums.QrCodeStatus
   chatbotId?: string | null
+  agentId?: string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -452,6 +472,7 @@ export type QrCodeUncheckedUpdateManyInput = {
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
   chatbotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -477,6 +498,7 @@ export type QrCodeCountOrderByAggregateInput = {
   lastScannedAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   chatbotId?: Prisma.SortOrder
+  agentId?: Prisma.SortOrder
   designConfig?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -496,6 +518,7 @@ export type QrCodeMaxOrderByAggregateInput = {
   lastScannedAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   chatbotId?: Prisma.SortOrder
+  agentId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -510,6 +533,7 @@ export type QrCodeMinOrderByAggregateInput = {
   lastScannedAt?: Prisma.SortOrder
   status?: Prisma.SortOrder
   chatbotId?: Prisma.SortOrder
+  agentId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -633,6 +657,48 @@ export type QrCodeUncheckedUpdateManyWithoutChatbotNestedInput = {
   deleteMany?: Prisma.QrCodeScalarWhereInput | Prisma.QrCodeScalarWhereInput[]
 }
 
+export type QrCodeCreateNestedManyWithoutAgentInput = {
+  create?: Prisma.XOR<Prisma.QrCodeCreateWithoutAgentInput, Prisma.QrCodeUncheckedCreateWithoutAgentInput> | Prisma.QrCodeCreateWithoutAgentInput[] | Prisma.QrCodeUncheckedCreateWithoutAgentInput[]
+  connectOrCreate?: Prisma.QrCodeCreateOrConnectWithoutAgentInput | Prisma.QrCodeCreateOrConnectWithoutAgentInput[]
+  createMany?: Prisma.QrCodeCreateManyAgentInputEnvelope
+  connect?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+}
+
+export type QrCodeUncheckedCreateNestedManyWithoutAgentInput = {
+  create?: Prisma.XOR<Prisma.QrCodeCreateWithoutAgentInput, Prisma.QrCodeUncheckedCreateWithoutAgentInput> | Prisma.QrCodeCreateWithoutAgentInput[] | Prisma.QrCodeUncheckedCreateWithoutAgentInput[]
+  connectOrCreate?: Prisma.QrCodeCreateOrConnectWithoutAgentInput | Prisma.QrCodeCreateOrConnectWithoutAgentInput[]
+  createMany?: Prisma.QrCodeCreateManyAgentInputEnvelope
+  connect?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+}
+
+export type QrCodeUpdateManyWithoutAgentNestedInput = {
+  create?: Prisma.XOR<Prisma.QrCodeCreateWithoutAgentInput, Prisma.QrCodeUncheckedCreateWithoutAgentInput> | Prisma.QrCodeCreateWithoutAgentInput[] | Prisma.QrCodeUncheckedCreateWithoutAgentInput[]
+  connectOrCreate?: Prisma.QrCodeCreateOrConnectWithoutAgentInput | Prisma.QrCodeCreateOrConnectWithoutAgentInput[]
+  upsert?: Prisma.QrCodeUpsertWithWhereUniqueWithoutAgentInput | Prisma.QrCodeUpsertWithWhereUniqueWithoutAgentInput[]
+  createMany?: Prisma.QrCodeCreateManyAgentInputEnvelope
+  set?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+  disconnect?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+  delete?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+  connect?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+  update?: Prisma.QrCodeUpdateWithWhereUniqueWithoutAgentInput | Prisma.QrCodeUpdateWithWhereUniqueWithoutAgentInput[]
+  updateMany?: Prisma.QrCodeUpdateManyWithWhereWithoutAgentInput | Prisma.QrCodeUpdateManyWithWhereWithoutAgentInput[]
+  deleteMany?: Prisma.QrCodeScalarWhereInput | Prisma.QrCodeScalarWhereInput[]
+}
+
+export type QrCodeUncheckedUpdateManyWithoutAgentNestedInput = {
+  create?: Prisma.XOR<Prisma.QrCodeCreateWithoutAgentInput, Prisma.QrCodeUncheckedCreateWithoutAgentInput> | Prisma.QrCodeCreateWithoutAgentInput[] | Prisma.QrCodeUncheckedCreateWithoutAgentInput[]
+  connectOrCreate?: Prisma.QrCodeCreateOrConnectWithoutAgentInput | Prisma.QrCodeCreateOrConnectWithoutAgentInput[]
+  upsert?: Prisma.QrCodeUpsertWithWhereUniqueWithoutAgentInput | Prisma.QrCodeUpsertWithWhereUniqueWithoutAgentInput[]
+  createMany?: Prisma.QrCodeCreateManyAgentInputEnvelope
+  set?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+  disconnect?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+  delete?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+  connect?: Prisma.QrCodeWhereUniqueInput | Prisma.QrCodeWhereUniqueInput[]
+  update?: Prisma.QrCodeUpdateWithWhereUniqueWithoutAgentInput | Prisma.QrCodeUpdateWithWhereUniqueWithoutAgentInput[]
+  updateMany?: Prisma.QrCodeUpdateManyWithWhereWithoutAgentInput | Prisma.QrCodeUpdateManyWithWhereWithoutAgentInput[]
+  deleteMany?: Prisma.QrCodeScalarWhereInput | Prisma.QrCodeScalarWhereInput[]
+}
+
 export type QrCodeCreateWithoutOrganizationInput = {
   id?: string
   name: string
@@ -645,6 +711,7 @@ export type QrCodeCreateWithoutOrganizationInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   chatbot?: Prisma.ChatbotCreateNestedOneWithoutQrCodesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutQrCodesInput
   scans?: Prisma.QrScanCreateNestedManyWithoutQrCodeInput
 }
 
@@ -657,6 +724,7 @@ export type QrCodeUncheckedCreateWithoutOrganizationInput = {
   lastScannedAt?: Date | string | null
   status?: $Enums.QrCodeStatus
   chatbotId?: string | null
+  agentId?: string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -702,6 +770,7 @@ export type QrCodeScalarWhereInput = {
   lastScannedAt?: Prisma.DateTimeNullableFilter<"QrCode"> | Date | string | null
   status?: Prisma.EnumQrCodeStatusFilter<"QrCode"> | $Enums.QrCodeStatus
   chatbotId?: Prisma.StringNullableFilter<"QrCode"> | string | null
+  agentId?: Prisma.StringNullableFilter<"QrCode"> | string | null
   designConfig?: Prisma.JsonNullableFilter<"QrCode">
   createdAt?: Prisma.DateTimeFilter<"QrCode"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"QrCode"> | Date | string
@@ -720,6 +789,7 @@ export type QrCodeCreateWithoutScansInput = {
   updatedAt?: Date | string
   organization: Prisma.OrganizationCreateNestedOneWithoutQrCodesInput
   chatbot?: Prisma.ChatbotCreateNestedOneWithoutQrCodesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutQrCodesInput
 }
 
 export type QrCodeUncheckedCreateWithoutScansInput = {
@@ -732,6 +802,7 @@ export type QrCodeUncheckedCreateWithoutScansInput = {
   lastScannedAt?: Date | string | null
   status?: $Enums.QrCodeStatus
   chatbotId?: string | null
+  agentId?: string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -766,6 +837,7 @@ export type QrCodeUpdateWithoutScansInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutQrCodesNestedInput
   chatbot?: Prisma.ChatbotUpdateOneWithoutQrCodesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutQrCodesNestedInput
 }
 
 export type QrCodeUncheckedUpdateWithoutScansInput = {
@@ -778,6 +850,7 @@ export type QrCodeUncheckedUpdateWithoutScansInput = {
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
   chatbotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -795,6 +868,7 @@ export type QrCodeCreateWithoutChatbotInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   organization: Prisma.OrganizationCreateNestedOneWithoutQrCodesInput
+  agent?: Prisma.AgentCreateNestedOneWithoutQrCodesInput
   scans?: Prisma.QrScanCreateNestedManyWithoutQrCodeInput
 }
 
@@ -807,6 +881,7 @@ export type QrCodeUncheckedCreateWithoutChatbotInput = {
   scanCount?: number
   lastScannedAt?: Date | string | null
   status?: $Enums.QrCodeStatus
+  agentId?: string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -839,6 +914,64 @@ export type QrCodeUpdateManyWithWhereWithoutChatbotInput = {
   data: Prisma.XOR<Prisma.QrCodeUpdateManyMutationInput, Prisma.QrCodeUncheckedUpdateManyWithoutChatbotInput>
 }
 
+export type QrCodeCreateWithoutAgentInput = {
+  id?: string
+  name: string
+  description?: string | null
+  publicCode: string
+  scanCount?: number
+  lastScannedAt?: Date | string | null
+  status?: $Enums.QrCodeStatus
+  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  organization: Prisma.OrganizationCreateNestedOneWithoutQrCodesInput
+  chatbot?: Prisma.ChatbotCreateNestedOneWithoutQrCodesInput
+  scans?: Prisma.QrScanCreateNestedManyWithoutQrCodeInput
+}
+
+export type QrCodeUncheckedCreateWithoutAgentInput = {
+  id?: string
+  organizationId: string
+  name: string
+  description?: string | null
+  publicCode: string
+  scanCount?: number
+  lastScannedAt?: Date | string | null
+  status?: $Enums.QrCodeStatus
+  chatbotId?: string | null
+  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  scans?: Prisma.QrScanUncheckedCreateNestedManyWithoutQrCodeInput
+}
+
+export type QrCodeCreateOrConnectWithoutAgentInput = {
+  where: Prisma.QrCodeWhereUniqueInput
+  create: Prisma.XOR<Prisma.QrCodeCreateWithoutAgentInput, Prisma.QrCodeUncheckedCreateWithoutAgentInput>
+}
+
+export type QrCodeCreateManyAgentInputEnvelope = {
+  data: Prisma.QrCodeCreateManyAgentInput | Prisma.QrCodeCreateManyAgentInput[]
+  skipDuplicates?: boolean
+}
+
+export type QrCodeUpsertWithWhereUniqueWithoutAgentInput = {
+  where: Prisma.QrCodeWhereUniqueInput
+  update: Prisma.XOR<Prisma.QrCodeUpdateWithoutAgentInput, Prisma.QrCodeUncheckedUpdateWithoutAgentInput>
+  create: Prisma.XOR<Prisma.QrCodeCreateWithoutAgentInput, Prisma.QrCodeUncheckedCreateWithoutAgentInput>
+}
+
+export type QrCodeUpdateWithWhereUniqueWithoutAgentInput = {
+  where: Prisma.QrCodeWhereUniqueInput
+  data: Prisma.XOR<Prisma.QrCodeUpdateWithoutAgentInput, Prisma.QrCodeUncheckedUpdateWithoutAgentInput>
+}
+
+export type QrCodeUpdateManyWithWhereWithoutAgentInput = {
+  where: Prisma.QrCodeScalarWhereInput
+  data: Prisma.XOR<Prisma.QrCodeUpdateManyMutationInput, Prisma.QrCodeUncheckedUpdateManyWithoutAgentInput>
+}
+
 export type QrCodeCreateManyOrganizationInput = {
   id?: string
   name: string
@@ -848,6 +981,7 @@ export type QrCodeCreateManyOrganizationInput = {
   lastScannedAt?: Date | string | null
   status?: $Enums.QrCodeStatus
   chatbotId?: string | null
+  agentId?: string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -865,6 +999,7 @@ export type QrCodeUpdateWithoutOrganizationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chatbot?: Prisma.ChatbotUpdateOneWithoutQrCodesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutQrCodesNestedInput
   scans?: Prisma.QrScanUpdateManyWithoutQrCodeNestedInput
 }
 
@@ -877,6 +1012,7 @@ export type QrCodeUncheckedUpdateWithoutOrganizationInput = {
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
   chatbotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -892,6 +1028,7 @@ export type QrCodeUncheckedUpdateManyWithoutOrganizationInput = {
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
   chatbotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -906,6 +1043,7 @@ export type QrCodeCreateManyChatbotInput = {
   scanCount?: number
   lastScannedAt?: Date | string | null
   status?: $Enums.QrCodeStatus
+  agentId?: string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -923,6 +1061,7 @@ export type QrCodeUpdateWithoutChatbotInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutQrCodesNestedInput
+  agent?: Prisma.AgentUpdateOneWithoutQrCodesNestedInput
   scans?: Prisma.QrScanUpdateManyWithoutQrCodeNestedInput
 }
 
@@ -935,6 +1074,7 @@ export type QrCodeUncheckedUpdateWithoutChatbotInput = {
   scanCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -950,6 +1090,69 @@ export type QrCodeUncheckedUpdateManyWithoutChatbotInput = {
   scanCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
+  agentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type QrCodeCreateManyAgentInput = {
+  id?: string
+  organizationId: string
+  name: string
+  description?: string | null
+  publicCode: string
+  scanCount?: number
+  lastScannedAt?: Date | string | null
+  status?: $Enums.QrCodeStatus
+  chatbotId?: string | null
+  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type QrCodeUpdateWithoutAgentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  scanCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
+  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  organization?: Prisma.OrganizationUpdateOneRequiredWithoutQrCodesNestedInput
+  chatbot?: Prisma.ChatbotUpdateOneWithoutQrCodesNestedInput
+  scans?: Prisma.QrScanUpdateManyWithoutQrCodeNestedInput
+}
+
+export type QrCodeUncheckedUpdateWithoutAgentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  scanCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
+  chatbotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  scans?: Prisma.QrScanUncheckedUpdateManyWithoutQrCodeNestedInput
+}
+
+export type QrCodeUncheckedUpdateManyWithoutAgentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  organizationId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  publicCode?: Prisma.StringFieldUpdateOperationsInput | string
+  scanCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastScannedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.EnumQrCodeStatusFieldUpdateOperationsInput | $Enums.QrCodeStatus
+  chatbotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   designConfig?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -996,11 +1199,13 @@ export type QrCodeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   lastScannedAt?: boolean
   status?: boolean
   chatbotId?: boolean
+  agentId?: boolean
   designConfig?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   chatbot?: boolean | Prisma.QrCode$chatbotArgs<ExtArgs>
+  agent?: boolean | Prisma.QrCode$agentArgs<ExtArgs>
   scans?: boolean | Prisma.QrCode$scansArgs<ExtArgs>
   _count?: boolean | Prisma.QrCodeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["qrCode"]>
@@ -1015,11 +1220,13 @@ export type QrCodeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   lastScannedAt?: boolean
   status?: boolean
   chatbotId?: boolean
+  agentId?: boolean
   designConfig?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   chatbot?: boolean | Prisma.QrCode$chatbotArgs<ExtArgs>
+  agent?: boolean | Prisma.QrCode$agentArgs<ExtArgs>
 }, ExtArgs["result"]["qrCode"]>
 
 export type QrCodeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1032,11 +1239,13 @@ export type QrCodeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   lastScannedAt?: boolean
   status?: boolean
   chatbotId?: boolean
+  agentId?: boolean
   designConfig?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   chatbot?: boolean | Prisma.QrCode$chatbotArgs<ExtArgs>
+  agent?: boolean | Prisma.QrCode$agentArgs<ExtArgs>
 }, ExtArgs["result"]["qrCode"]>
 
 export type QrCodeSelectScalar = {
@@ -1049,25 +1258,29 @@ export type QrCodeSelectScalar = {
   lastScannedAt?: boolean
   status?: boolean
   chatbotId?: boolean
+  agentId?: boolean
   designConfig?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type QrCodeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId" | "name" | "description" | "publicCode" | "scanCount" | "lastScannedAt" | "status" | "chatbotId" | "designConfig" | "createdAt" | "updatedAt", ExtArgs["result"]["qrCode"]>
+export type QrCodeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "organizationId" | "name" | "description" | "publicCode" | "scanCount" | "lastScannedAt" | "status" | "chatbotId" | "agentId" | "designConfig" | "createdAt" | "updatedAt", ExtArgs["result"]["qrCode"]>
 export type QrCodeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   chatbot?: boolean | Prisma.QrCode$chatbotArgs<ExtArgs>
+  agent?: boolean | Prisma.QrCode$agentArgs<ExtArgs>
   scans?: boolean | Prisma.QrCode$scansArgs<ExtArgs>
   _count?: boolean | Prisma.QrCodeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type QrCodeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   chatbot?: boolean | Prisma.QrCode$chatbotArgs<ExtArgs>
+  agent?: boolean | Prisma.QrCode$agentArgs<ExtArgs>
 }
 export type QrCodeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   organization?: boolean | Prisma.OrganizationDefaultArgs<ExtArgs>
   chatbot?: boolean | Prisma.QrCode$chatbotArgs<ExtArgs>
+  agent?: boolean | Prisma.QrCode$agentArgs<ExtArgs>
 }
 
 export type $QrCodePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1075,6 +1288,7 @@ export type $QrCodePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   objects: {
     organization: Prisma.$OrganizationPayload<ExtArgs>
     chatbot: Prisma.$ChatbotPayload<ExtArgs> | null
+    agent: Prisma.$AgentPayload<ExtArgs> | null
     scans: Prisma.$QrScanPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1087,6 +1301,7 @@ export type $QrCodePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     lastScannedAt: Date | null
     status: $Enums.QrCodeStatus
     chatbotId: string | null
+    agentId: string | null
     designConfig: runtime.JsonValue | null
     createdAt: Date
     updatedAt: Date
@@ -1486,6 +1701,7 @@ export interface Prisma__QrCodeClient<T, Null = never, ExtArgs extends runtime.T
   readonly [Symbol.toStringTag]: "PrismaPromise"
   organization<T extends Prisma.OrganizationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrganizationDefaultArgs<ExtArgs>>): Prisma.Prisma__OrganizationClient<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   chatbot<T extends Prisma.QrCode$chatbotArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.QrCode$chatbotArgs<ExtArgs>>): Prisma.Prisma__ChatbotClient<runtime.Types.Result.GetResult<Prisma.$ChatbotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  agent<T extends Prisma.QrCode$agentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.QrCode$agentArgs<ExtArgs>>): Prisma.Prisma__AgentClient<runtime.Types.Result.GetResult<Prisma.$AgentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   scans<T extends Prisma.QrCode$scansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.QrCode$scansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QrScanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1525,6 +1741,7 @@ export interface QrCodeFieldRefs {
   readonly lastScannedAt: Prisma.FieldRef<"QrCode", 'DateTime'>
   readonly status: Prisma.FieldRef<"QrCode", 'QrCodeStatus'>
   readonly chatbotId: Prisma.FieldRef<"QrCode", 'String'>
+  readonly agentId: Prisma.FieldRef<"QrCode", 'String'>
   readonly designConfig: Prisma.FieldRef<"QrCode", 'Json'>
   readonly createdAt: Prisma.FieldRef<"QrCode", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"QrCode", 'DateTime'>
@@ -1724,11 +1941,6 @@ export type QrCodeFindManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Skip the first `n` QrCodes.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of QrCodes.
-   */
   distinct?: Prisma.QrCodeScalarFieldEnum | Prisma.QrCodeScalarFieldEnum[]
 }
 
@@ -1945,6 +2157,25 @@ export type QrCode$chatbotArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   include?: Prisma.ChatbotInclude<ExtArgs> | null
   where?: Prisma.ChatbotWhereInput
+}
+
+/**
+ * QrCode.agent
+ */
+export type QrCode$agentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Agent
+   */
+  select?: Prisma.AgentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Agent
+   */
+  omit?: Prisma.AgentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AgentInclude<ExtArgs> | null
+  where?: Prisma.AgentWhereInput
 }
 
 /**
